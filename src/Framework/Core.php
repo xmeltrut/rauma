@@ -45,9 +45,10 @@ class Core
         $builder = new ContainerBuilder();
         $sessionFactory = new SessionFactory;
         $session = $sessionFactory->newInstance($_COOKIE);
+        $templatesDir = isset($this->config['templating']['directory']) ? $this->config['templating']['directory'] : 'templates';
 
         $di = $builder->newInstance();
-        $di->params['\\Rauma\\Templating\\Templating']['directory'] = '../' . $this->config['templating']['directory'];
+        $di->params['\\Rauma\\Templating\\Templating']['directory'] = '../' . $templatesDir;
         $di->set('templating', $di->lazyNew('\\Rauma\\Templating\\Templating'));
         $di->set('db', DatabaseFactory::create($this->appPath, $this->config['database']));
         $di->set('session', $session);
