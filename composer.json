@@ -2,6 +2,7 @@
     "name": "xmeltrut/rauma",
     "tyoe": "library",
     "description": "Rauma full-stack PHP framework",
+    "homepage": "https://github.com/xmeltrut/rauma",
     "license": "MIT",
     "authors": [
         {
