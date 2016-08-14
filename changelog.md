@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.3
+-----
+* Bug fix for user roles not being set
+
 1.0.2
 -----
 * Authentication now supports user role checking
