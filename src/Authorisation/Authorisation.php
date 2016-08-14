@@ -60,6 +60,17 @@ class Authorisation
     }
 
     /**
+     * Check if the user has a specific role.
+     *
+     * @param string $role Role identifier.
+     * @return boolean
+     */
+    public function hasRole($role)
+    {
+        return (in_array($role, $this->segment->get('roles')));
+    }
+
+    /**
      * Hash a password.
      *
      * @param string $password Password
