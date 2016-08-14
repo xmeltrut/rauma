@@ -67,7 +67,10 @@ class Authorisation
      */
     public function hasRole($role)
     {
-        return (in_array($role, $this->segment->get('roles')));
+        return (
+            is_array($this->segment->get('roles')) &&
+            in_array($role, $this->segment->get('roles'))
+        );
     }
 
     /**
