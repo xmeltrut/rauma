@@ -25,6 +25,11 @@ class Meta
     /**
      * @var string
      */
+    protected $canonicalUrl;
+
+    /**
+     * @var string
+     */
     protected $ogTitle;
 
     /**
@@ -100,6 +105,27 @@ class Meta
         foreach ($keywords as $keyword) {
             $this->keywords[] = $keyword;
         }
+    }
+
+    /**
+     * Get the canonical URL.
+     *
+     * @return string
+     */
+    public function getCanonicalUrl()
+    {
+        return $this->canonicalUrl;
+    }
+
+    /**
+     * Set the canonical URL.
+     *
+     * @param string $value URL.
+     * @return void
+     */
+    public function setCanonicalUrl($value)
+    {
+        $this->canonicalUrl = $value;
     }
 
     /**
