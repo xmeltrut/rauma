@@ -48,7 +48,7 @@ class Core
         $templatesDir = isset($this->config['templating']['directory']) ? $this->config['templating']['directory'] : 'templates';
 
         $di = $builder->newInstance();
-        $di->params['\\Rauma\\Templating\\Templating']['directory'] = '../' . $templatesDir;
+        $di->params['\\Rauma\\Templating\\Templating']['directory'] = $this->appPath . '/' . $templatesDir;
         $di->set('templating', $di->lazyNew('\\Rauma\\Templating\\Templating'));
         $di->set('db', DatabaseFactory::create($this->appPath, $this->config['database']));
         $di->set('session', $session);
