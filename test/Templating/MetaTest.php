@@ -28,11 +28,11 @@ class MetaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Test description', $meta->getDescription());
     }
 
-    public function testCanonicalUrl()
+    public function testCanonical()
     {
         $meta = new Meta;
 
-        $meta->setCanonicalUrl('test.url');
-        $this->assertEquals('test.url', $meta->getCanonicalUrl());
+        $meta->setCanonical('test.url');
+        $this->assertEquals('test.url', $meta->getCanonical());
     }
 }

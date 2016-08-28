@@ -25,7 +25,7 @@ class Meta
     /**
      * @var string
      */
-    protected $canonicalUrl;
+    protected $canonical;
 
     /**
      * @var string
@@ -112,9 +112,9 @@ class Meta
      *
      * @return string
      */
-    public function getCanonicalUrl()
+    public function getCanonical()
     {
-        return $this->canonicalUrl;
+        return $this->canonical;
     }
 
     /**
@@ -123,9 +123,9 @@ class Meta
      * @param string $value URL.
      * @return void
      */
-    public function setCanonicalUrl($value)
+    public function setCanonical($value)
     {
-        $this->canonicalUrl = $value;
+        $this->canonical = $value;
     }
 
     /**
