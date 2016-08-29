@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.1
+-----
+* Allow host to be set on database connection
+
 1.1
 ---
 * Add canonical URL support to meta class
