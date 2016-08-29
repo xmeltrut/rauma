@@ -26,14 +26,16 @@ class Authorisation
     /**
      * Set up the user to give them access.
      *
-     * @param string $identifier Name for the user.
-     * @param array  $roles      List of roles the user has.
+     * @param integer $id          Unique ID.
+     * @param string  $description Name for the user.
+     * @param array   $roles       List of roles the user has.
      *
      * @return null
      */
-    public function authoriseUser($identifier, $roles = [])
+    public function authoriseUser($id, $description, $roles = [])
     {
-        $this->segment->set('identifier', $identifier);
+        $this->segment->set('id', $id);
+        $this->segment->set('description', $description);
         $this->segment->set('authorised', true);
         $this->segment->set('roles', $roles);
         $this->session->regenerateId();
@@ -50,13 +52,23 @@ class Authorisation
     }
 
     /**
-     * Get the user identifier.
+     * Get the user ID.
      *
      * @return string
      */
-    public function getIdentifier()
+    public function getId()
     {
-        return $this->segment->get('identifier');
+        return $this->segment->get('id');
+    }
+
+    /**
+     * Get the user description.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->segment->get('description');
     }
 
     /**
