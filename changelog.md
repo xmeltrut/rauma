@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.0
+---
+* New authorisation system
+
 1.1.1
 -----
 * Allow host to be set on database connection
