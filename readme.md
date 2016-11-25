@@ -3,6 +3,13 @@ Rauma PHP Framework
 
 A full-stack PHP framework.
 
+Roadmap
+-------
+
+* Minimal bootstrapping
+* Custom error controller
+* Service injection
+
 Development
 -----------
 

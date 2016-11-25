@@ -5,9 +5,10 @@ namespace Rauma\Framework;
 use Rauma\Authorisation\AuthorisationFactory;
 use Rauma\Database\DatabaseFactory;
 use Rauma\Framework\Config\ConfigFactory;
+use Rauma\Messaging\ServerRequestFactory;
+use Rauma\Templating\TemplatingFactory;
 use Aura\Di\ContainerBuilder;
 use Aura\Session\SessionFactory;
-use Rauma\Messaging\ServerRequestFactory;
 
 /**
  * This is the core of the framework. It runs the whole show.
@@ -45,11 +46,9 @@ class Core
         $builder = new ContainerBuilder();
         $sessionFactory = new SessionFactory;
         $session = $sessionFactory->newInstance($_COOKIE);
-        $templatesDir = isset($this->config['templating']['directory']) ? $this->config['templating']['directory'] : null;
 
         $di = $builder->newInstance();
-        $di->params['\\Rauma\\Templating\\Templating']['directory'] = $this->appPath . '/' . $templatesDir;
-        $di->set('templating', $di->lazyNew('\\Rauma\\Templating\\Templating'));
+        $di->set('templating', TemplatingFactory::create($this->appPath, $this->config['templating']));
         $di->set('db', DatabaseFactory::create($this->appPath, $this->config['database']));
         $di->set('session', $session);
         $di->set('auth', AuthorisationFactory::create($session));
