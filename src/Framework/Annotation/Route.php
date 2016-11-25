@@ -45,8 +45,10 @@ class Route
      */
     public function __construct(array $values)
     {
+        $verbList = isset($values['method']) ? $values['method'] : 'GET';
+
         $this->processPath($values['value']);
-        $this->verbs = isset($values['method']) ? $this->processVerbs($values['method']) : ['GET'];
+        $this->verbs = $this->processVerbs($verbList);
     }
 
     /**
