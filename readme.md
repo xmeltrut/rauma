@@ -29,8 +29,6 @@ config.yml
 routing:
     controllers:
         - "App\\Controller\\TestController"
-templating:
-    directory: "templates"
 database:
     entityPath: "src/Entity"
 ```
@@ -65,3 +63,14 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
 ```
+
+Config
+------
+
+You can customise the config.
+
+```yaml
+templating:
+    directory: "templates"
+```
+
