@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.1.1
+-----
+* Fixing but with exception controller
+
 2.1
 ---
 * Templating config is now optional
