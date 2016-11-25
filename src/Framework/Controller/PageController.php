@@ -17,14 +17,14 @@ class PageController extends Controller
      * @var string
      */
     protected $layout = 'layout.html';
-    
+
     /**
      * Meta information for the page.
      *
      * @var \Rauma\Templating\Meta
      */
     protected $meta;
-    
+
     /**
      * Constructor. Assign instance variables.
      *
@@ -37,7 +37,21 @@ class PageController extends Controller
         
         $this->meta = new Meta;
     }
-    
+
+    /**
+     * Render a template without a wrapper.
+     *
+     * @param string  $template Template file.
+     * @param array   $data     Template data.
+     * @param integer $status   Status code.
+     * @return \Zend\Diactoros\Response\HtmlResponse
+     */
+    public function render($template, array $data = [], $status = 200)
+    {
+        $page = $this->service('templating')->render($template, $data);
+        return new HtmlResponse($page, $status);
+    }
+
     /**
      * Render a template and put into a page wrapper.
      *
