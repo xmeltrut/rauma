@@ -8,6 +8,7 @@ Changelog
 * Default forbidden template is now 403.html, not forbidden.html
 * Exception controller no longer uses the page wrapper
 * Added support for custom exception controllers
+* Automatically support HEAD requests when a GET request is mapped
 
 2.0
 ---
