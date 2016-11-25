@@ -6,9 +6,6 @@ A full-stack PHP framework. Rauma uses convention over configuration to provide 
 Roadmap
 -------
 
-* Expand authorisation documentation
-* Cover any other documentation
-* Migration guide
 * Service injection
 
 Development
