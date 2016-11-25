@@ -45,7 +45,7 @@ class Core
         $builder = new ContainerBuilder();
         $sessionFactory = new SessionFactory;
         $session = $sessionFactory->newInstance($_COOKIE);
-        $templatesDir = isset($this->config['templating']['directory']) ? $this->config['templating']['directory'] : 'templates';
+        $templatesDir = isset($this->config['templating']['directory']) ? $this->config['templating']['directory'] : null;
 
         $di = $builder->newInstance();
         $di->params['\\Rauma\\Templating\\Templating']['directory'] = $this->appPath . '/' . $templatesDir;

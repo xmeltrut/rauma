@@ -20,12 +20,14 @@ class Templating
      */
     public function __construct($directory)
     {
-        if (is_dir($directory)) {
-            $this->engine = new Mustache_Engine([
-                'loader' => new Mustache_Loader_FilesystemLoader($directory, ['extension' => '']),
-                'partials_loader' => new Mustache_Loader_FilesystemLoader($directory, ['extension' => ''])
-            ]);
+        if ($directory === null) {
+            $directory = (is_dir('templates')) ? 'templates' : __DIR__ . '/../../templates';
         }
+
+        $this->engine = new Mustache_Engine([
+            'loader' => new Mustache_Loader_FilesystemLoader($directory, ['extension' => '']),
+            'partials_loader' => new Mustache_Loader_FilesystemLoader($directory, ['extension' => ''])
+        ]);
     }
     
     /**
@@ -37,10 +39,6 @@ class Templating
      */
     public function render($template, array $data = [])
     {
-        if ($this->engine === null) {
-            throw new Exception('Templating is not configred');
-        }
-
         return $this->engine->render($template, $data);
     }
 }
