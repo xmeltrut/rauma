@@ -48,7 +48,10 @@ class Core
         $session = $sessionFactory->newInstance($_COOKIE);
 
         $di = $builder->newInstance();
-        $di->set('templating', TemplatingFactory::create($this->appPath, $this->config['templating']));
+        $di->set('templating', TemplatingFactory::create(
+            $this->appPath,
+            isset($this->config['templating']) ? $this->config['templating'] : []
+        ));
         $di->set('db', DatabaseFactory::create($this->appPath, $this->config['database']));
         $di->set('session', $session);
         $di->set('auth', AuthorisationFactory::create($session));
