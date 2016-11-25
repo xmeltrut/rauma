@@ -3,6 +3,7 @@
 namespace Rauma\Framework;
 
 use Rauma\Framework\Controller\ExceptionController;
+use Exception;
 use Aura\Di\Container;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -35,7 +36,7 @@ class ErrorHandler
     public function handleError($num, $string, $file, $line)
     {
         $controller = new ExceptionController($this->di, $this->request);
-        $response = $controller->error(new \Exception(sprintf(
+        $response = $controller->error(new Exception(sprintf(
             'PHP error: %s (%s), in %s:%s',
             $string,
             $num,
