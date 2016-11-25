@@ -6,6 +6,7 @@ Migration guide
 
 Implement a custom exception handler, or new error pages.
 
+Rename forbidden.html to 403.html.
 
 2.0
 ---
