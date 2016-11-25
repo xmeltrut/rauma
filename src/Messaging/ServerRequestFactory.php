@@ -14,10 +14,15 @@ class ServerRequestFactory extends ZendServerRequestFactory
      *
      * @return ServerRequest
      */
-    public static function fromGlobals()
-    {
-        $server  = static::normalizeServer($_SERVER);
-        $files   = static::normalizeFiles($_FILES);
+    public static function fromGlobals(
+        array $server = null,
+        array $query = null,
+        array $body = null,
+        array $cookies = null,
+        array $files = null
+    ) {
+        $server  = static::normalizeServer($server ?: $_SERVER);
+        $files   = static::normalizeFiles($files ?: $_FILES);
         $headers = static::marshalHeaders($server);
 
         return new ServerRequest(
@@ -27,9 +32,9 @@ class ServerRequestFactory extends ZendServerRequestFactory
             static::get('REQUEST_METHOD', $server, 'GET'),
             'php://input',
             $headers,
-            $_COOKIE,
-            $_GET,
-            $_POST
+            $cookies ?: $_COOKIE,
+            $query ?: $_GET,
+            $body ?: $_POST
         );
     }
 }
