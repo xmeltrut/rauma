@@ -52,9 +52,15 @@ class Core
             $this->appPath,
             isset($this->config['templating']) ? $this->config['templating'] : []
         ));
-        $di->set('db', DatabaseFactory::create($this->appPath, $this->config['database']));
         $di->set('session', $session);
         $di->set('auth', AuthorisationFactory::create($session));
+
+        if (isset($this->config['database'])) {
+            $di->set('db', DatabaseFactory::create(
+                $this->appPath,
+                $this->config['database']
+            ));
+        }
 
         $request = ServerRequestFactory::fromGlobals();
         

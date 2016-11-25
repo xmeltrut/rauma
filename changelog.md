@@ -3,7 +3,8 @@ Changelog
 
 2.1
 ---
-* Templates directory is no longer required in config
+* Templating config is now optional
+* Database configuration is now optional
 * Default forbidden template is now 403.html, not forbidden.html
 * Exception controller no longer uses the page wrapper
 * Added support for custom exception controllers

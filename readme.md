@@ -6,7 +6,7 @@ A full-stack PHP framework.
 Roadmap
 -------
 
-* Minimal bootstrapping
+* Documentation
 * Service injection
 
 Development
@@ -35,8 +35,6 @@ config.yml
 routing:
     controllers:
         - "App\\Controller\\TestController"
-database:
-    entityPath: "src/Entity"
 ```
 
 public/index.php
@@ -80,5 +78,7 @@ routing:
     exceptionController: "App\\Controller\\ExceptionController"
 templating:
     directory: "templates"
+database:
+    entityPath: "src/Entity"
 ```
 
