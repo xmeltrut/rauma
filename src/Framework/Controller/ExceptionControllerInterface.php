@@ -2,7 +2,7 @@
 
 namespace Rauma\Framework\Controller;
 
-class ExceptionControllerInterface
+interface ExceptionControllerInterface
 {
     public function error(Exception $exception);
     public function forbidden();
