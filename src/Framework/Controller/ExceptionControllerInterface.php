@@ -2,6 +2,8 @@
 
 namespace Rauma\Framework\Controller;
 
+use Exception;
+
 interface ExceptionControllerInterface
 {
     public function error(Exception $exception);
