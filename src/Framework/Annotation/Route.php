@@ -34,7 +34,8 @@ class Route
         'GET',
         'POST',
         'PUT',
-        'DELETE'
+        'DELETE',
+        'HEAD'
     ];
     
     /**
@@ -68,7 +69,7 @@ class Route
 
         $this->path = $path;
     }
-    
+
     /**
      * Handle options for the method attribute.
      *
@@ -79,17 +80,21 @@ class Route
     {
         $filteredVerbs = [];
         $verbList = (strpos($verbs, ',') === false) ? [$verbs] : explode(',', $verbs);
-        
+
         foreach ($verbList as $verb) {
             if (in_array($verb, $this->allowedVerbs)) {
                 $filteredVerbs[] = $verb;
             }
         }
-        
+
+        if (in_array('GET', $filteredVerbs) && !in_array('HEAD', $filteredVerbs)) {
+            $filteredVerbs[] = 'HEAD';
+        }
+
         if (count($filteredVerbs) == 0) {
             throw new \Exception("No valid verbs were found in '$verbs'.");
         }
-        
+
         return $filteredVerbs;
     }
     
