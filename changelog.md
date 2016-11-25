@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.1
+---
+* Templates directory is no longer required in config
+
 2.0
 ---
 * New authorisation system
