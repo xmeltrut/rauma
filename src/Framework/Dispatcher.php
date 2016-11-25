@@ -132,8 +132,8 @@ class Dispatcher
      */
     protected function getExceptionController(ServerRequestInterface $request)
     {
-        if (isset($this->config['errorHandling']['exceptionController'])) {
-            $className = $this->config['errorHandling']['exceptionController'];
+        if (isset($this->config['exceptionController'])) {
+            $className = $this->config['exceptionController'];
 
             if (class_exists($className)) {
                 $class = new $className($this->di, $request);
