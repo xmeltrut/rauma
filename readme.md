@@ -1,6 +1,7 @@
 Rauma PHP Framework
 ===================
 
+[![Build Status](https://travis-ci.org/xmeltrut/rauma.svg?branch=master)](https://travis-ci.org/xmeltrut/rauma)
 [![Latest Stable Version](https://poser.pugx.org/xmeltrut/rauma/v/stable)](https://packagist.org/packages/xmeltrut/rauma)
 [![Total Downloads](https://poser.pugx.org/xmeltrut/rauma/downloads)](https://packagist.org/packages/xmeltrut/rauma)
 [![Documentation Status](https://readthedocs.org/projects/rauma/badge/?version=latest)](http://rauma.readthedocs.io/en/latest/?badge=latest)
