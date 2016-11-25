@@ -7,7 +7,6 @@ Roadmap
 -------
 
 * Minimal bootstrapping
-* Custom error controller
 * Service injection
 
 Development
