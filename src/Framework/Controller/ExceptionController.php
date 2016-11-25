@@ -8,7 +8,7 @@ use Zend\Diactoros\Response\RedirectResponse;
 /**
  * Default controller for handling application exceptions.
  */
-class ExceptionController extends PageController
+class ExceptionController extends PageController implements ExceptionControllerInterface
 {
     /**
      * Called when there is a 500 Server Error.
