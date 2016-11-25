@@ -47,7 +47,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals('/test/view', $route->getPath());
         $this->assertEquals('POST', $route->getVerb());
-        $this->assertEquals(['PUT','DELETE','HEAD'], $route->getAdditionalVerbs());
+        $this->assertEquals(['PUT','DELETE'], $route->getAdditionalVerbs());
         $this->assertEquals('post_test.view', $route->generateName());
     }
     
