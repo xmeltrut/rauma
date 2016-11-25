@@ -89,16 +89,87 @@ class AuthorisationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $auth->hasRole('role2'));
     }
 
-    public function testHasPassword()
+    public function testHashAndVerifyPassword()
     {
         $session = $this->getMockBuilder('Aura\\Session\\Session')
                         ->disableOriginalConstructor()
                         ->getMock();
         
         $auth = new Authorisation($session);
-        $password = $auth->hashPassword('password123');
+        $hash = $auth->hashPassword('password123');
 
-        $this->assertInternalType('string', $password);
-        $this->assertNotEquals('password123', $password);
+        $this->assertInternalType('string', $hash);
+        $this->assertNotEquals('password123', $hash);
+
+        $this->assertEquals(true, $auth->verifyPassword($hash, 'password123'));
+        $this->assertEquals(false, $auth->verifyPassword($hash, 'different-pass'));
+    }
+
+    public function testValidateRoute()
+    {
+        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        $segment->method('get')->will($this->returnCallback(function($param) {
+            switch ($param) {
+                case 'authorised':
+                    return 1;
+                case 'roles':
+                    return ['Admin'];
+            }
+        }));
+        //$segment->expects($this->once())->method('get')->with('authorised')->willReturn(1);
+
+        $session = $this->getMockBuilder('Aura\\Session\\Session')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        $session->method('getSegment')->willReturn($segment);
+
+        $auth = new Authorisation($session);
+
+        $this->assertEquals(true, $auth->validateRoute([
+            'required' => true,
+            'allowed' => ['Admin']
+        ]));
+    }
+
+    /**
+     * @expectedException \Rauma\Authorisation\Exception\UnauthorisedException
+     */
+    public function testValidateRouteUnauthorised()
+    {
+        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        $segment->expects($this->once())->method('get')->with('authorised')->willReturn(false);
+
+        $session = $this->getMockBuilder('Aura\\Session\\Session')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        $session->method('getSegment')->willReturn($segment);
+
+        $auth = new Authorisation($session);
+
+        $auth->validateRoute(['required' => true]);
+    }
+
+    /**
+     * @expectedException \Rauma\Authorisation\Exception\ForbiddenException
+     */
+    public function testValidateRouteForbidden()
+    {
+        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        $segment->expects($this->once())->method('get')->with('roles')->willReturn(['User']);
+
+        $session = $this->getMockBuilder('Aura\\Session\\Session')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        $session->method('getSegment')->willReturn($segment);
+
+        $auth = new Authorisation($session);
+
+        $auth->validateRoute(['allowed' => ['Admin']]);
     }
 }

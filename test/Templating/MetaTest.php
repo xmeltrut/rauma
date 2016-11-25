@@ -20,6 +20,14 @@ class MetaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('New', $meta->getTitle());
     }
 
+    public function testKeywords()
+    {
+        $meta = new Meta;
+
+        $meta->addKeywords(['a', 'b']);
+        $this->assertEquals('a,b', $meta->getKeywords());
+    }
+
     public function testDescription()
     {
         $meta = new Meta;
@@ -34,5 +42,16 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
         $meta->setCanonical('test.url');
         $this->assertEquals('test.url', $meta->getCanonical());
+    }
+
+    public function testOpenGraph()
+    {
+        $meta = new Meta;
+
+        $meta->setOgTitle('test og');
+        $this->assertEquals('test og', $meta->getOgTitle());
+
+        $meta->setOgImage('og-image');
+        $this->assertEquals('og-image', $meta->getOgImage());
     }
 }

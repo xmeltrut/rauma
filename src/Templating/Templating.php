@@ -16,11 +16,12 @@ class Templating
     /**
      * Create engine.
      *
-     * @param string $directory Directory containing the template files.
+     * @param string          $directory Directory containing the template files.
+     * @param Mustache_Engine $engine    Override for unit tests.
      */
-    public function __construct($directory)
+    public function __construct($directory, Mustache_Engine $engine = null)
     {
-        $this->engine = new Mustache_Engine([
+        $this->engine = $engine ?: new Mustache_Engine([
             'loader' => new Mustache_Loader_FilesystemLoader($directory, ['extension' => '']),
             'partials_loader' => new Mustache_Loader_FilesystemLoader($directory, ['extension' => ''])
         ]);
