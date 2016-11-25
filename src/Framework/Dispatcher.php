@@ -5,12 +5,14 @@ namespace Rauma\Framework;
 use Rauma\Authorisation\Exception\ForbiddenException;
 use Rauma\Authorisation\Exception\UnauthorisedException;
 use Rauma\Framework\Controller\ExceptionController;
+use Rauma\Framework\Controller\ExceptionControllerInterface;
 use Rauma\Framework\Exception\NotFoundException;
 use Aura\Router\RouterContainer;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\IndexedReader;
 use Doctrine\Common\Cache\ApcCache;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Handles the dispatch of a request to a controller.
@@ -44,14 +46,14 @@ class Dispatcher
         $this->di = $di;
         $this->router = $this->loadRoutes();
     }
-    
+
     /**
      * Dispatch a request.
      *
-     * @param \Psr\Http\Message\ServerRequestInterface $request Request.
+     * @param ServerRequestInterface $request Request.
      * @return string
      */
-    public function dispatch(\Psr\Http\Message\ServerRequestInterface $request)
+    public function dispatch(ServerRequestInterface $request)
     {
         $matcher = $this->router->getMatcher();
         $route = $matcher->match($request);
@@ -67,16 +69,16 @@ class Dispatcher
             $controller = new $controllerName($this->di, $request);
             $response = call_user_func_array([$controller, $methodName], $route->attributes);
         } catch (NotFoundException $e) {
-            $controller = new ExceptionController($this->di, $request);
+            $controller = $this->getExceptionController($request);
             $response = $controller->notFound();
         } catch (UnauthorisedException $e) {
-            $controller = new ExceptionController($this->di, $request);
+            $controller = $this->getExceptionController($request);
             $response = $controller->unauthorised();
         } catch (ForbiddenException $e) {
-            $controller = new ExceptionController($this->di, $request);
+            $controller = $this->getExceptionController($request);
             $response = $controller->forbidden();
         } catch (\Exception $e) {
-            $controller = new ExceptionController($this->di, $request);
+            $controller = $this->getExceptionController($request);
             $response = $controller->error($e);
         }
         
@@ -120,5 +122,28 @@ class Dispatcher
         }
 
         return $router;
+    }
+
+    /**
+     * Get the exception controller.
+     *
+     * @param ServerRequestInterface $request Request object.
+     * @return ExceptionControllerInterface
+     */
+    protected function getExceptionController(ServerRequestInterface $request)
+    {
+        if (isset($this->config['errorHandling']['exceptionController'])) {
+            $className = $this->config['errorHandling']['exceptionController'];
+
+            if (class_exists($className)) {
+                $class = new $className($this->di, $request);
+
+                if ($class instanceof ExceptionControllerInterface) {
+                    return $class;
+                }
+            }
+        }
+
+        return new ExceptionController($this->di, $request);
     }
 }

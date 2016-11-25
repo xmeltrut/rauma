@@ -77,6 +77,8 @@ Config
 You can customise the config.
 
 ```yaml
+errorHandling:
+    exceptionController: "App\\Controller\\ExceptionController"
 templating:
     directory: "templates"
 ```
