@@ -21,7 +21,7 @@ class ExceptionController extends PageController
             throw $exception;
         }
 
-        return $this->render('500.html', [], [], 500);
+        return $this->render('500.html', [], 500);
     }
 
     /**
@@ -31,7 +31,7 @@ class ExceptionController extends PageController
      */
     public function forbidden()
     {
-        return $this->render('403.html', [], [], 403);
+        return $this->render('403.html', [], 403);
     }
 
     /**
@@ -41,7 +41,7 @@ class ExceptionController extends PageController
      */
     public function notFound()
     {
-        return $this->render('404.html', [], [], 404);
+        return $this->render('404.html', [], 404);
     }
 
     /**
