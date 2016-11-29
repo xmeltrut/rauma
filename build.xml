@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Rauma" default="build">
 
-    <target name="build" depends="phpunit,phpcs"/>
-    
-    <target name="phpunit">
-        <exec executable="vendor/bin/phpunit" failonerror="true"/>
+    <target name="build" depends="lint,phpunit,phpcs"/>
+
+    <target name="lint" description="Syntax checking of PHP code">
+        <apply executable="php" failonerror="true">
+            <arg value="-l"/>
+            <fileset dir="${basedir}/src">
+                <include name="**/*.php"/>
+            </fileset>
+            <fileset dir="${basedir}/test">
+                <include name="**/*.php"/>
+            </fileset>
+        </apply>
     </target>
-    
+
+    <target name="phpunit">
+        <exec executable="${basedir}/vendor/bin/phpunit" failonerror="true"/>
+    </target>
+
     <target name="phpcs">
-        <exec executable="vendor/bin/phpcs" failonerror="true">
+        <exec executable="${basedir}/vendor/bin/phpcs" failonerror="true">
             <arg value="-p"/>
             <arg value="--standard=ruleset.xml"/>
             <arg value="src/"/>
+        </exec>
+    </target>
+
+    <target name="coverage" description="Run unit tests with PHPUnit">
+        <exec executable="${basedir}/vendor/bin/phpunit" failonerror="true">
+            <arg value="--coverage-clover"/>
+            <arg value="${basedir}/build/coverage/coverage.xml"/>
+            <arg value="--coverage-html"/>
+            <arg value="${basedir}/build/coverage"/>
+            <arg value="--log-junit"/>
+            <arg value="${basedir}/build/logs/phpunit.xml"/>
         </exec>
     </target>
 

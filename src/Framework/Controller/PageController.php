@@ -2,6 +2,7 @@
 
 namespace Rauma\Framework\Controller;
 
+use Rauma\Service\Container;
 use Rauma\Templating\Meta;
 use Zend\Diactoros\Response\HtmlResponse;
 
@@ -9,7 +10,7 @@ use Zend\Diactoros\Response\HtmlResponse;
  * Child class of Controller. This adds additional functionality
  * if you are serving web pages and want functionality like layouts.
  */
-class PageController extends Controller
+abstract class PageController extends Controller
 {
     /**
      * Layout template for rendering pages.
@@ -28,10 +29,10 @@ class PageController extends Controller
     /**
      * Constructor. Assign instance variables.
      *
-     * @param \Aura\Di\Container                       $di      Dependency injection container.
+     * @param \Rauma\Service\Container                 $di      Dependency injection container.
      * @param \Psr\Http\Message\ServerRequestInterface $request PSR-7 request object.
      */
-    public function __construct(\Aura\Di\Container $di, \Psr\Http\Message\ServerRequestInterface $request)
+    public function __construct(Container $di, \Psr\Http\Message\ServerRequestInterface $request)
     {
         parent::__construct($di, $request);
         
@@ -46,7 +47,7 @@ class PageController extends Controller
      * @param integer $status   Status code.
      * @return \Zend\Diactoros\Response\HtmlResponse
      */
-    public function render($template, array $data = [], $status = 200)
+    protected function render($template, array $data = [], $status = 200)
     {
         $page = $this->service('templating')->render($template, $data);
         return new HtmlResponse($page, $status);

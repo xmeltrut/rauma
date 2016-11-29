@@ -3,8 +3,8 @@
 namespace Rauma\Framework;
 
 use Rauma\Framework\Controller\ExceptionController;
+use Rauma\Service\Container;
 use Exception;
-use Aura\Di\Container;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ErrorHandler
@@ -15,7 +15,7 @@ class ErrorHandler
     /**
      * Constructor.
      *
-     * @param \Aura\Di\Container                       $di      Services
+     * @param \Rauma\Service\Container                 $di      Services
      * @param \Psr\Http\Message\ServerRequestInterface $request Request
      */
     public function __construct(Container $di, ServerRequestInterface $request)
@@ -32,6 +32,7 @@ class ErrorHandler
      * @param string  $file   Filename
      * @param integer $line   Line number
      * @return null
+     * @codeCoverageIgnore Cannot test dies.
      */
     public function handleError($num, $string, $file, $line)
     {

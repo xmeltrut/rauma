@@ -28,8 +28,10 @@ Custom error handling
 
 You can configure your own exception handling class in `config.yml`.
 
+```yaml
 routing:
     exceptionController: "App\\Controller\\ExceptionController"
+```
 
 This class needs to implement `ExceptionControllerInterface`. If the class cannot be found, or does not implement the exception interface, it will silently fall back to the in-built error handling.
 

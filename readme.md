@@ -11,11 +11,6 @@ A full-stack PHP framework. Rauma uses convention over configuration to provide 
 
 Limited documentation is available in the `docs` directory, or online via [Read the Docs](http://rauma.readthedocs.io/en/latest/).
 
-Roadmap
--------
-
-* Service injection
-
 Development
 -----------
 

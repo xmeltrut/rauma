@@ -7,6 +7,7 @@ use Rauma\Authorisation\Exception\UnauthorisedException;
 use Rauma\Framework\Controller\ExceptionController;
 use Rauma\Framework\Controller\ExceptionControllerInterface;
 use Rauma\Framework\Exception\NotFoundException;
+use Rauma\Service\Container;
 use Aura\Router\RouterContainer;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\AnnotationReader;
@@ -25,7 +26,7 @@ class Dispatcher
     protected $config;
     
     /**
-     * @var \Aura\Di\Container
+     * @var \Rauma\Service\Container
      */
     protected $di;
     
@@ -37,10 +38,10 @@ class Dispatcher
     /**
      * Constructor. Load the routes in.
      *
-     * @param array              $config Config for routing.
-     * @param \Aura\Di\Container $di     Dependency injection container.
+     * @param array     $config Config for routing.
+     * @param Container $di     Dependency injection container.
      */
-    public function __construct(array $config, \Aura\Di\Container $di)
+    public function __construct(array $config, Container $di)
     {
         $this->config = $config;
         $this->di = $di;

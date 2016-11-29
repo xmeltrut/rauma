@@ -3,6 +3,7 @@
 namespace Rauma\Framework\Controller;
 
 use Rauma\Common\Collection;
+use Rauma\Service\Container;
 use Zend\Diactoros\Request;
 
 /**
@@ -13,7 +14,7 @@ abstract class Controller
     /**
      * Dependency injection container.
      *
-     * @var \Aura\Di\Container
+     * @var \Rauma\Service\Container
      */
     private $di;
     
@@ -34,10 +35,10 @@ abstract class Controller
     /**
      * Constructor. Assign instance variables.
      *
-     * @param \Aura\Di\Container                       $di      Dependency injection container.
+     * @param \Rauma\Service\Container                 $di      Dependency injection container.
      * @param \Psr\Http\Message\ServerRequestInterface $request PSR-7 request object.
      */
-    public function __construct(\Aura\Di\Container $di, \Psr\Http\Message\ServerRequestInterface $request)
+    public function __construct(Container $di, \Psr\Http\Message\ServerRequestInterface $request)
     {
         $this->di = $di;
         $this->request = $request;

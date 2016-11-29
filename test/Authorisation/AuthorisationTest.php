@@ -110,7 +110,7 @@ class AuthorisationTest extends \PHPUnit_Framework_TestCase
         $segment = $this->getMockBuilder('Aura\\Session\\Segment')
                         ->disableOriginalConstructor()
                         ->getMock();
-        $segment->method('get')->will($this->returnCallback(function($param) {
+        $segment->method('get')->will($this->returnCallback(function ($param) {
             switch ($param) {
                 case 'authorised':
                     return 1;
@@ -118,7 +118,6 @@ class AuthorisationTest extends \PHPUnit_Framework_TestCase
                     return ['Admin'];
             }
         }));
-        //$segment->expects($this->once())->method('get')->with('authorised')->willReturn(1);
 
         $session = $this->getMockBuilder('Aura\\Session\\Session')
                         ->disableOriginalConstructor()

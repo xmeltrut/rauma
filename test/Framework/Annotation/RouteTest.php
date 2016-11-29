@@ -60,4 +60,15 @@ class RouteTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/', $route->getPath());
         $this->assertEquals('get__index', $route->generateName());
     }
+
+    /**
+     * @expectedException Exception
+     */
+    public function testNoVerbs()
+    {
+        $route = new Route([
+            'value' => '/test-route',
+            'method' => 'FAKE-VERB'
+        ]);
+    }
 }

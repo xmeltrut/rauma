@@ -2,12 +2,9 @@
 
 namespace Rauma\Framework;
 
-use Rauma\Authorisation\AuthorisationFactory;
-use Rauma\Database\DatabaseFactory;
 use Rauma\Framework\Config\ConfigFactory;
 use Rauma\Messaging\ServerRequestFactory;
-use Rauma\Templating\TemplatingFactory;
-use Aura\Di\ContainerBuilder;
+use Rauma\Service\ContainerBuilder;
 use Aura\Session\SessionFactory;
 
 /**
@@ -43,23 +40,30 @@ class Core
      */
     public function run()
     {
-        $builder = new ContainerBuilder();
+        $di = ContainerBuilder::create($this->getConfig('services'));
+
         $sessionFactory = new SessionFactory;
         $session = $sessionFactory->newInstance($_COOKIE);
-
-        $di = $builder->newInstance();
-        $di->set('templating', TemplatingFactory::create(
-            $this->appPath,
-            isset($this->config['templating']) ? $this->config['templating'] : []
-        ));
         $di->set('session', $session);
-        $di->set('auth', AuthorisationFactory::create($session));
+
+        $di->register(
+            'templating',
+            'Rauma\Templating\TemplatingFactory::create',
+            [$this->appPath, $this->getConfig('templating')]
+        );
+
+        $di->register(
+            'auth',
+            'Rauma\Authorisation\AuthorisationFactory::create',
+            [$session]
+        );
 
         if (isset($this->config['database'])) {
-            $di->set('db', DatabaseFactory::create(
-                $this->appPath,
-                $this->config['database']
-            ));
+            $di->register(
+                'db',
+                'Rauma\Database\DatabaseFactory::create',
+                [$this->appPath, $this->config['database']]
+            );
         }
 
         $request = ServerRequestFactory::fromGlobals();
@@ -70,5 +74,20 @@ class Core
 
         $response = $dispatcher->dispatch($request);
         return new Response($response);
+    }
+
+    /**
+     * Get a config item, if it exists.
+     *
+     * @param string $key Key.
+     * @return array
+     */
+    private function getConfig($key)
+    {
+        if (isset($this->config[$key])) {
+            return $this->config[$key];
+        }
+
+        return [];
     }
 }

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+3.0
+---
+* New service container system
+* Ability to inject custom services
+
 2.1.1
 -----
 * Fixing but with exception controller

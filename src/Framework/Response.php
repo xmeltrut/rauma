@@ -29,6 +29,7 @@ class Response
      * Send the headers to the browser.
      *
      * @return void
+     * @codeCoverageIgnore Cannot test headers.
      */
     public function sendHeaders()
     {
@@ -55,6 +56,7 @@ class Response
      * Send everything to the browser.
      *
      * @return void
+     * @codeCoverageIgnore Cannot test headers.
      */
     public function send()
     {

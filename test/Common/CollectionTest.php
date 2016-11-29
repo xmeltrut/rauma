@@ -15,5 +15,11 @@ class COllectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, $collection['b']);
         $this->assertEquals(3, $collection['c']);
         $this->assertEquals(null, $collection['d']);
+        $this->assertEquals(true, isset($collection['a']));
+        $this->assertEquals(false, isset($collection['e']));
+
+        unset($collection['a']);
+
+        $this->assertEquals(false, isset($collection['a']));
     }
 }

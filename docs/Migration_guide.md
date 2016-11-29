@@ -1,6 +1,11 @@
 Migration guide
 ===============
 
+3.0
+---
+
+Controllers used to take a `Aura\Di\Container` object as their first argument. They must now take a `Rauma\Service\Container` object.
+
 2.1
 ---
 
