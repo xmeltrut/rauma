@@ -24,7 +24,6 @@
         "doctrine/annotations": "1.2.*",
         "doctrine/orm": "2.5.*",
         "mustache/mustache": "2.10.*",
-        "symfony/finder": "3.0.*",
         "symfony/yaml": "3.0.*",
         "zendframework/zend-diactoros": "1.3.*"
     },
