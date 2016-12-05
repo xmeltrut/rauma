@@ -58,6 +58,11 @@ class Core
             [$session]
         );
 
+        $di->register(
+            'sitemap',
+            'Rauma\Sitemap\Sitemap'
+        );
+
         if (isset($this->config['database'])) {
             $di->register(
                 'db',

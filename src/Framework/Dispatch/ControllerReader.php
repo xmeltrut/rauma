@@ -86,6 +86,10 @@ class ControllerReader
                         $routeInfo['auth']['allowed'] = $annotation->getRoles();
                     }
                 }
+
+                if ($annotation instanceof \Rauma\Framework\Annotation\Sitemap) {
+                    $routeInfo['sitemap'] = true;
+                }
             }
 
             if (isset($routeInfo['verb'])) {

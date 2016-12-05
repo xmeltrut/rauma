@@ -29,13 +29,15 @@ class ControllerReaderTest extends \PHPUnit_Framework_TestCase
         $routeAnnotation->method('getAdditionalVerbs')->willReturn(['HEAD']);
         $routeAnnotation->method('getTokens')->willReturn([]);
 
+        $sitemapAnnotation = $this->getMock('Rauma\Framework\Annotation\Sitemap');
+
         $this->reader->expects($this->once())
                      ->method('getClassAnnotations')
                      ->willReturn([$classAnnotation]);
 
         $this->reader->expects($this->once())
                      ->method('getMethodAnnotations')
-                     ->willReturn([$routeAnnotation]);
+                     ->willReturn([$routeAnnotation, $sitemapAnnotation]);
 
         $cr = new ControllerReader(
             $this->reader,
@@ -52,7 +54,8 @@ class ControllerReaderTest extends \PHPUnit_Framework_TestCase
             'path' => '/test-route',
             'additionalVerbs' => ['HEAD'],
             'tokens' => [],
-            'auth' => ['required' => true]
+            'auth' => ['required' => true],
+            'sitemap' => true
         ]], $routes);
     }
 }

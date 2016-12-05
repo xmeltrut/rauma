@@ -96,6 +96,7 @@ class Dispatcher
         AnnotationRegistry::registerFile(__DIR__ .'/Annotation/Allowed.php');
         AnnotationRegistry::registerFile(__DIR__ .'/Annotation/LoggedIn.php');
         AnnotationRegistry::registerFile(__DIR__ .'/Annotation/Route.php');
+        AnnotationRegistry::registerFile(__DIR__ .'/Annotation/Sitemap.php');
 
         $router = new RouterContainer();
         $reader = new IndexedReader(
@@ -118,6 +119,11 @@ class Dispatcher
 
                 if ($routeInfo['additionalVerbs']) {
                     $route->allows($routeInfo['additionalVerbs']);
+                }
+
+                if (isset($routeInfo['sitemap'])) {
+                    $sitemapUrl = new SitemapUrl($routeInfo['path']);
+                    $this->di->get('sitemap')->addUrl($sitemapUrl);
                 }
             }
         }
