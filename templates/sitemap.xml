@@ -3,6 +3,7 @@
 {{#sitemap}}{{#getUrls}}
     <url>
         <loc>{{getLocation}}</loc>
+        {{#getChangeFreq}}<changefreq>{{.}}</changefreq>{{/getChangeFreq}}
     </url>
 {{/getUrls}}{{/sitemap}}
 </urlset>
