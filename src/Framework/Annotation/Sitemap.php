@@ -19,12 +19,12 @@ class Sitemap
      * @var array
      */
     private $allowedChangeFreqs = [
-        'always'
-        'hourly'
-        'daily'
-        'weekly'
-        'monthly'
-        'yearly'
+        'always',
+        'hourly',
+        'daily',
+        'weekly',
+        'monthly',
+        'yearly',
         'never'
     ];
 
