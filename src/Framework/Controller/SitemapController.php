@@ -4,9 +4,6 @@
  * @todo Add unit test
  * @todo Return xml content header
  * @todo Take template from standard location
- * @todo Changelog
- * @todo Documentation
- * @todo Migration guide
  */
 
 namespace Rauma\Framework\Controller;

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.1
+---
+* Added sitemap generator
+
 3.0
 ---
 * New service container system
