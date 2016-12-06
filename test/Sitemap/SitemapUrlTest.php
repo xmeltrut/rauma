@@ -13,10 +13,12 @@ class SitemapUrlTest extends \PHPUnit_Framework_TestCase
                            ->getMock();
 
         $annotation->method('getChangeFreq')->willReturn('daily');
+        $annotation->method('getPriority')->willReturn(0.5);
 
         $url = new SitemapUrl('/test');
 
         $this->assertEquals('/test', $url->getLocation());
         $this->assertEquals('daily', $url->getChangeFreq());
+        $this->assertEquals(0.5, $url->getPriority());
     }
 }

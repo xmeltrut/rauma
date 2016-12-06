@@ -47,4 +47,14 @@ class SitemapUrl
     {
         return $this->annotation->getChangeFreq();
     }
+
+    /**
+     * Get priority.
+     *
+     * @return float
+     */
+    public function getPriority()
+    {
+        return $this->annotation->getPriority();
+    }
 }

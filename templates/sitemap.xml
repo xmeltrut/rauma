@@ -4,6 +4,7 @@
     <url>
         <loc>{{getLocation}}</loc>
         {{#getChangeFreq}}<changefreq>{{.}}</changefreq>{{/getChangeFreq}}
+        {{#getPriority}}<priority>{{.}}</priority>{{/getPriority}}
     </url>
 {{/getUrls}}{{/sitemap}}
 </urlset>

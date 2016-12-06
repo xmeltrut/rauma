@@ -61,4 +61,27 @@ class Sitemap
 
         return null;
     }
+
+    /**
+     * Get priority.
+     *
+     * @return float
+     */
+    public function getPriority()
+    {
+        if (isset($this->values['priority'])) {
+            $priority = floatval($this->values['priority']);
+
+            if ($priority < 0 || $priority > 1) {
+                throw new Exception\AnnotationException(sprintf(
+                    'Invalid priority: %s',
+                    $priority
+                ));
+            }
+
+            return $priority;
+        }
+
+        return 0.5;
+    }
 }

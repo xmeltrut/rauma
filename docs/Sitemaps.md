@@ -18,7 +18,7 @@ class ExampleController
 {
     /**
      * @Route("/example")
-     * @Sitemap(changefreq="daily")
+     * @Sitemap(changefreq="daily", priority="0.5")
      */
     public function example()
     {
