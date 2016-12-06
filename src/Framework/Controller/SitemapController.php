@@ -9,7 +9,7 @@
 namespace Rauma\Framework\Controller;
 
 use Rauma\Framework\Annotation\Route;
-use Zend\Diactoros\Response;
+use Zend\Diactoros\Response\TextResponse;
 
 /**
  * Out-of-the-box sitemap functionality.
@@ -31,6 +31,6 @@ class SitemapController extends Controller
             ['sitemap' => $this->service('sitemap')]
         );
 
-        return new Response($xml);
+        return new TextResponse($xml);
     }
 }
