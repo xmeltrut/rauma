@@ -55,7 +55,7 @@ class ControllerReaderTest extends \PHPUnit_Framework_TestCase
             'additionalVerbs' => ['HEAD'],
             'tokens' => [],
             'auth' => ['required' => true],
-            'sitemap' => true
+            'sitemap' => $sitemapAnnotation
         ]], $routes);
     }
 }

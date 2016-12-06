@@ -88,7 +88,7 @@ class ControllerReader
                 }
 
                 if ($annotation instanceof \Rauma\Framework\Annotation\Sitemap) {
-                    $routeInfo['sitemap'] = true;
+                    $routeInfo['sitemap'] = $annotation;
                 }
             }
 

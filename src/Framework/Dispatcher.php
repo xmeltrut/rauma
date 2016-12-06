@@ -123,7 +123,11 @@ class Dispatcher
                 }
 
                 if (isset($routeInfo['sitemap'])) {
-                    $sitemapUrl = new SitemapUrl($routeInfo['path']);
+                    $sitemapUrl = new SitemapUrl(
+                        $routeInfo['path'],
+                        $routeInfo['sitemap']
+                    );
+
                     $this->di->get('sitemap')->addUrl($sitemapUrl);
                 }
             }

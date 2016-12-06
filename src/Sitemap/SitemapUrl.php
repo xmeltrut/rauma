@@ -2,6 +2,8 @@
 
 namespace Rauma\Sitemap;
 
+use Rauma\Framework\Annotation\Sitemap as Annotation;
+
 class SitemapUrl
 {
     /**
@@ -10,13 +12,20 @@ class SitemapUrl
     private $location;
 
     /**
+     * @var Annotation
+     */
+    private $annotation;
+
+    /**
      * Constructor.
      *
-     * @param string $location Location.
+     * @param string     $location   Location.
+     * @param Annotation $annotation Annotation.
      */
-    public function __construct($location)
+    public function __construct($location, Annotation $annotation)
     {
         $this->location = $location;
+        $this->annotation = $annotation;
     }
 
     /**
@@ -27,5 +36,15 @@ class SitemapUrl
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * Get change frequency.
+     *
+     * @return string|null
+     */
+    public function getChangeFreq()
+    {
+        return $this->annotation->getChangeFreq();
     }
 }
