@@ -16,7 +16,7 @@ class Sitemap
      */
     public function addUrl(SitemapUrl $url)
     {
-        $urls[] = $url;
+        $this->urls[] = $url;
     }
 
     /**
