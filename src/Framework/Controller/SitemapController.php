@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @todo Add unit test
  * @todo Take template from standard location
  */
 
