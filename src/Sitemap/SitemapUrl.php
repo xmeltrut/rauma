@@ -30,7 +30,9 @@ class SitemapUrl
         $this->annotation = $annotation;
 
         if (count($tokens) > 0) {
-            throw new AnnotationException('Sitemap annotation used on URL with tokens.');
+            throw new AnnotationException(
+                'Sitemap annotation used on URL with tokens.'
+            );
         }
     }
 
