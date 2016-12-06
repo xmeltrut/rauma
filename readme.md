@@ -19,6 +19,8 @@ To do list
 
 The current code does not work because tokens() is only populated when you specify a pattern.
 
+We need to modify Sitemap.php to check for generators/tokens and use them.
+
 Roadmap
 -------
 

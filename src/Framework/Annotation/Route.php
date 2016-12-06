@@ -66,6 +66,8 @@ class Route
                 $token = explode(':', $matches[1][$key]);
                 $this->tokens[$token[0]] = $token[1];
                 $path = str_replace($val, sprintf('{%s}', $token[0]), $path);
+            } else {
+                $this->tokens[$val] = null;
             }
         }
 

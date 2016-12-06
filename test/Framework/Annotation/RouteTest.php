@@ -26,6 +26,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
         ]);
         
         $this->assertEquals('/test/{id}', $route->getPath());
+        $this->assertEquals(['id' => null], $route->getTokens());
     }
 
     public function testRegex()
