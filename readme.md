@@ -16,7 +16,6 @@ To do list
 
 * Should include full URL paths
 * Handle dynamic URLs
-* Support options
 
 Roadmap
 -------

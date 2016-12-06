@@ -15,10 +15,22 @@ class SitemapUrlTest extends \PHPUnit_Framework_TestCase
         $annotation->method('getChangeFreq')->willReturn('daily');
         $annotation->method('getPriority')->willReturn(0.5);
 
-        $url = new SitemapUrl('/test');
+        $url = new SitemapUrl('/test', $annotation);
 
         $this->assertEquals('/test', $url->getLocation());
         $this->assertEquals('daily', $url->getChangeFreq());
         $this->assertEquals(0.5, $url->getPriority());
+    }
+
+    /**
+     * @expectedException Rauma\Framework\Annotation\Exception\AnnotationException
+     */
+    public function testTokens()
+    {
+        $annotation = $this->getMockBuilder('Rauma\Framework\Annotation\Sitemap')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+
+        $url = new SitemapUrl('/test', $annotation, ['test-token']);
     }
 }

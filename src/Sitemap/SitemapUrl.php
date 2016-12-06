@@ -3,6 +3,7 @@
 namespace Rauma\Sitemap;
 
 use Rauma\Framework\Annotation\Sitemap as Annotation;
+use Rauma\Framework\Annotation\Exception\AnnotationException;
 
 class SitemapUrl
 {
@@ -21,11 +22,16 @@ class SitemapUrl
      *
      * @param string     $location   Location.
      * @param Annotation $annotation Annotation.
+     * @param array      $tokens     Tokens.
      */
-    public function __construct($location, Annotation $annotation)
+    public function __construct($location, Annotation $annotation, arry $tokens = [])
     {
         $this->location = $location;
         $this->annotation = $annotation;
+
+        if (count($tokens) > 0) {
+            throw new AnnotationException('Sitemap annotation used on URL with tokens.');
+        }
     }
 
     /**
