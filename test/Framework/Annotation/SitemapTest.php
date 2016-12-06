@@ -16,17 +16,20 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
         );
         $this->assertEquals(null, $annotation->getChangeFreq());
         $this->assertEquals(0.5, $annotation->getPriority());
+        $this->assertEquals(null, $annotation->getGenerator());
     }
 
     public function testAttributes()
     {
         $annotation = new Sitemap([
             'changefreq' => 'daily'
-            'priority' => '0.7'
+            'priority' => '0.7',
+            'generator' => 'methodName'
         ]);
 
         $this->assertEquals('daily', $annotation->getChangeFreq());
         $this->assertEquals(0.7, $annotation->getPriority());
+        $this->assertEquals('methodName', $annotation->getGenerator());
     }
 
     /**

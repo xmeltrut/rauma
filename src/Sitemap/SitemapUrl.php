@@ -29,9 +29,9 @@ class SitemapUrl
         $this->location = $location;
         $this->annotation = $annotation;
 
-        if (count($tokens) > 0) {
+        if (count($tokens) > 0 && $annotation->getGenerator() === null) {
             throw new AnnotationException(
-                'Sitemap annotation used on URL with tokens.'
+                'Sitemap URLs with tokens require a generator.'
             );
         }
     }
@@ -64,5 +64,15 @@ class SitemapUrl
     public function getPriority()
     {
         return $this->annotation->getPriority();
+    }
+
+    /**
+     * Get generator.
+     *
+     * @return string|null
+     */
+    public function getGenerator()
+    {
+        return $this->annotation->getGenerator();
     }
 }

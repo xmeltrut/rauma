@@ -84,4 +84,18 @@ class Sitemap
 
         return 0.5;
     }
+
+    /**
+     * Get generator.
+     *
+     * @return string|null
+     */
+    public function getGenerator()
+    {
+        if (isset($this->values['generator'])) {
+            return $this->values['generator'];
+        }
+
+        return null;
+    }
 }
