@@ -19,11 +19,6 @@ class SitemapController extends Controller
      */
     public function sitemap()
     {
-        /*$xml = $this->service('templating')->render(
-            __DIR__ . '/../../../templates/sitemap.xml',
-            ['sitemap' => $this->service('sitemap')]
-        );*/
-
         $xml = $this->service('templating')->render(
             'sitemap.xml',
             ['sitemap' => $this->service('sitemap')]

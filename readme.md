@@ -17,6 +17,8 @@ To do list
 * Should include full URL paths
 * Handle dynamic URLs
 
+The current code does not work because tokens() is only populated when you specify a pattern.
+
 Roadmap
 -------
 
