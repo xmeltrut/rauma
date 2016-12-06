@@ -18,4 +18,14 @@ class Sitemap
     {
         $urls[] = $url;
     }
+
+    /**
+     * Get the URLs.
+     *
+     * @return array
+     */
+    public function getUrls()
+    {
+        return $this->urls;
+    }
 }
