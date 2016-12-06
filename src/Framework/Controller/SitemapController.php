@@ -7,6 +7,7 @@
 
 namespace Rauma\Framework\Controller;
 
+use Rauma\Framework\Annotation\Route;
 use Zend\Diactoros\Response;
 
 /**
