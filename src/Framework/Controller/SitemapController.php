@@ -22,7 +22,7 @@ class SitemapController extends Controller
     {
         $xml = $this->service('templating')->render(
             __DIR__ . '/../../../templates/sitemap.xml',
-            $this->service('sitemap')
+            ['sitemap' => $this->service('sitemap')]
         );
 
         return new Response($xml);
