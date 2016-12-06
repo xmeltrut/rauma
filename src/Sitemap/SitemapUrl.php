@@ -24,7 +24,7 @@ class SitemapUrl
      * @param Annotation $annotation Annotation.
      * @param array      $tokens     Tokens.
      */
-    public function __construct($location, Annotation $annotation, arry $tokens = [])
+    public function __construct($location, Annotation $annotation, array $tokens = [])
     {
         $this->location = $location;
         $this->annotation = $annotation;
