@@ -18,7 +18,7 @@ class ExampleController
 {
     /**
      * @Route("/example")
-     * @Sitemap
+     * @Sitemap(changefreq="daily")
      */
     public function example()
     {
@@ -26,5 +26,7 @@ class ExampleController
     }
 }
 ```
+
+All attributes are optional.
 
 There is no support for dynamic URLs.
