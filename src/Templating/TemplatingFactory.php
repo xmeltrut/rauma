@@ -20,7 +20,7 @@ class TemplatingFactory
         if (isset($config['directory'])) {
             $fileLoader->addDirectory($config['directory']);
         } elseif (is_dir($appPath . '/templates')) {
-            $fileLoader->addDirectory($config['directory']);
+            $fileLoader->addDirectory($appPath . '/templates');
         }
 
         $engine = new Mustache_Engine([
