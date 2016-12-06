@@ -8,6 +8,7 @@ use Rauma\Framework\Controller\ExceptionController;
 use Rauma\Framework\Controller\ExceptionControllerInterface;
 use Rauma\Framework\Exception\NotFoundException;
 use Rauma\Service\Container;
+use Rauma\Sitemap\SitemapUrl;
 use Aura\Router\RouterContainer;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\AnnotationReader;
