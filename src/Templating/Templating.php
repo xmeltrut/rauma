@@ -2,6 +2,8 @@
 
 namespace Rauma\Templating;
 
+use Mustache_Engine;
+
 /**
  * Facade for the Mustache template engine.
  */
