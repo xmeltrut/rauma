@@ -3,6 +3,7 @@
 /**
  * @todo Add unit test
  * @todo Return xml content header
+ * @todo Take template from standard location
  */
 
 namespace Rauma\Framework\Controller;
@@ -20,8 +21,13 @@ class SitemapController extends Controller
      */
     public function sitemap()
     {
-        $xml = $this->service('templating')->render(
+        /*$xml = $this->service('templating')->render(
             __DIR__ . '/../../../templates/sitemap.xml',
+            ['sitemap' => $this->service('sitemap')]
+        );*/
+
+        $xml = $this->service('templating')->render(
+            'sitemap.xml',
             ['sitemap' => $this->service('sitemap')]
         );
 
