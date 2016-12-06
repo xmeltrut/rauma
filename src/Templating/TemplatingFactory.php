@@ -2,6 +2,8 @@
 
 namespace Rauma\Templating;
 
+use Mustache_Engine;
+
 class TemplatingFactory
 {
     /**
@@ -13,14 +15,19 @@ class TemplatingFactory
      */
     public static function create($appPath, array $config = [])
     {
+        $fileLoader = new FileLoader(__DIR__ . '/../../templates');
+
         if (isset($config['directory'])) {
-            $directory = $config['directory'];
+            $fileLoader->addDirectory($config['directory']);
         } elseif (is_dir($appPath . '/templates')) {
-            $directory = $appPath . '/templates';
-        } else {
-            $directory = __DIR__ . '/../../templates';
+            $fileLoader->addDirectory($config['directory']);
         }
 
-        return new Templating($directory);
+        $engine = new Mustache_Engine([
+            'loader' => $fileLoader,
+            'partials_loader' => $fileLoader
+        ]);
+
+        return new Templating($engine);
     }
 }

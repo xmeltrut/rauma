@@ -7,12 +7,10 @@ When an error is thrown, Rauma will handle it and search for a default template.
 * 404.html (not found)
 * 500.html (internal server error)
 
-These pages will be rendered standalone, without any layout wrapper.
-
 Templateless configuration
 --------------------------
 
-If you do not have a templates directory, Rauma will serve some simple default HTML files.
+If the required template does not exist, Rauma will serve some simple default HTML files.
 
 Error reporting
 ---------------
