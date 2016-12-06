@@ -2,7 +2,6 @@
 
 /**
  * @todo Add unit test
- * @todo Return xml content header
  * @todo Take template from standard location
  */
 
@@ -31,6 +30,8 @@ class SitemapController extends Controller
             ['sitemap' => $this->service('sitemap')]
         );
 
-        return new TextResponse($xml);
+        return new TextResponse($xml, 200, [
+            'Content-Type' => 'application/xml; charset=utf-8'
+        ]);
     }
 }

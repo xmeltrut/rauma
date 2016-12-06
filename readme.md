@@ -17,6 +17,11 @@ To do list
 * Update documentation
 * Migration guide
 
+Roadmap
+-------
+
+* Create our own set of response objects
+
 Development
 -----------
 
