@@ -14,8 +14,9 @@ Limited documentation is available in the `docs` directory, or online via [Read 
 To do list
 ----------
 
-* Update documentation
-* Migration guide
+* Should include full URL paths
+* Handle dynamic URLs
+* Support options
 
 Roadmap
 -------
