@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.1
+---
+* Multiple templating directories can now be used
+
 3.0
 ---
 * New service container system
