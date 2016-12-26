@@ -17,7 +17,7 @@ class TemplatingTest extends \PHPUnit_Framework_TestCase
                    ->with('page.html', ['a' => 'b'])
                    ->willReturn('html');
 
-        $templating = new Templating('', $engineMock);
+        $templating = new Templating($engineMock);
         $result = $templating->render('page.html', ['a' => 'b']);
 
         $this->assertEquals('html', $result);
