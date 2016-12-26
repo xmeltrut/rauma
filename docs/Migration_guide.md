@@ -9,7 +9,7 @@ Controllers used to take a `Aura\Di\Container` object as their first argument. T
 2.1
 ---
 
-Implement a custom exception handler, or new error pages.
+Implement a custom exception handler, if required.
 
 Rename forbidden.html to 403.html.
 

@@ -2,9 +2,7 @@
 
 namespace Rauma\Templating;
 
-use Exception;
 use Mustache_Engine;
-use Mustache_Loader_FilesystemLoader;
 
 /**
  * Facade for the Mustache template engine.
@@ -16,15 +14,11 @@ class Templating
     /**
      * Create engine.
      *
-     * @param string          $directory Directory containing the template files.
-     * @param Mustache_Engine $engine    Override for unit tests.
+     * @param Mustache_Engine $engine Mustache engine.
      */
-    public function __construct($directory, Mustache_Engine $engine = null)
+    public function __construct(Mustache_Engine $engine)
     {
-        $this->engine = $engine ?: new Mustache_Engine([
-            'loader' => new Mustache_Loader_FilesystemLoader($directory, ['extension' => '']),
-            'partials_loader' => new Mustache_Loader_FilesystemLoader($directory, ['extension' => ''])
-        ]);
+        $this->engine = $engine;
     }
     
     /**

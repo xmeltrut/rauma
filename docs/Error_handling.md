@@ -12,7 +12,7 @@ These pages will be rendered standalone, without any layout wrapper.
 Templateless configuration
 --------------------------
 
-If you do not have a templates directory, Rauma will serve some simple default HTML files.
+If the required template does not exist, Rauma will serve some simple default HTML files.
 
 Error reporting
 ---------------
