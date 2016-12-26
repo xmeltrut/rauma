@@ -22,7 +22,7 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
     public function testAttributes()
     {
         $annotation = new Sitemap([
-            'changefreq' => 'daily'
+            'changefreq' => 'daily',
             'priority' => '0.7',
             'generator' => 'methodName'
         ]);

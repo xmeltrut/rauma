@@ -2,7 +2,6 @@
 
 namespace Rauma\Templating;
 
-use Exception;
 use Mustache_Loader;
 
 class FileLoader implements Mustache_Loader
@@ -40,7 +39,9 @@ class FileLoader implements Mustache_Loader
         }
 
         if (!is_dir($path)) {
-            throw new Exception(sprintf('Invalid template directory: %s', $baseDir));
+            throw new Exception\RuntimeException(
+                sprintf('Invalid template directory: %s', $path)
+            );
         }
 
         $this->directories[] = $path;

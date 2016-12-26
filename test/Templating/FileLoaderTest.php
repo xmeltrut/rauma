@@ -11,16 +11,16 @@ class FileLoaderTest extends \PHPUnit_Framework_TestCase
     {
         $fileSystem = vfsStream::setup();
 
-        $directory1 = vfsStrsm::newDirectory('dir1')->at($fileSystem);
+        $directory1 = vfsStream::newDirectory('dir1')->at($fileSystem);
         $template1 = vfsStream::newFile('a.html')->at($directory1);
         $template1->setContent('b-html');
 
-        $directory2 = vfsStrsm::newDirectory('dir2')->at($fileSystem);
+        $directory2 = vfsStream::newDirectory('dir2')->at($fileSystem);
         $template2 = vfsStream::newFile('a.html')->at($directory2);
         $template2->setContent('b-html');
 
         $loader = new FileLoader($directory1->url());
-        $loader->addDirectory($directory2);
+        $loader->addDirectory($directory2->url());
 
         $templateContents = $loader->load('a.html');
 
@@ -28,7 +28,7 @@ class FileLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Rauma\Templating\TemplateNotFoundException
+     * @expectedException Rauma\Templating\Exception\TemplateNotFoundException
      */
     public function testTemplateNotFound()
     {

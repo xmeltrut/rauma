@@ -1,9 +1,13 @@
 Changelog
 =========
 
-3.1
+3.2
 ---
 * Added sitemap generator
+
+3.1
+---
+* Multiple templating directories can now be used
 
 3.0
 ---
