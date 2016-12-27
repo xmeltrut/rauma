@@ -12,9 +12,10 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
                     ->disableOriginalConstructor()
                     ->getMock();
 
-        $sitemap = new Sitemap;
+        $sitemap = new Sitemap('http://example.com');
         $sitemap->addUrl($url);
 
+        $this->assertEquals('htp://example.com', $sitemap->getBaseUrl());
         $this->assertEquals([$url], $sitemap->getUrls());
     }
 }

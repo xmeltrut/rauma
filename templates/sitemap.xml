@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {{#sitemap}}{{#getUrls}}
     <url>
-        <loc>{{getLocation}}</loc>
+        <loc>{{getBaseUrl}}{{getLocation}}</loc>
         {{#getChangeFreq}}<changefreq>{{.}}</changefreq>{{/getChangeFreq}}
         {{#getPriority}}<priority>{{.}}</priority>{{/getPriority}}
     </url>
