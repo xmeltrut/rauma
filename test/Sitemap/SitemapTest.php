@@ -15,7 +15,7 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
         $sitemap = new Sitemap('http://example.com');
         $sitemap->addUrl($url);
 
-        $this->assertEquals('htp://example.com', $sitemap->getBaseUrl());
+        $this->assertEquals('http://example.com', $sitemap->getBaseUrl());
         $this->assertEquals([$url], $sitemap->getUrls());
     }
 }
