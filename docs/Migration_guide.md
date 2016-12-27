@@ -1,6 +1,11 @@
 Migration guide
 ===============
 
+3.2
+---
+
+Configure sitemaps, if required.
+
 3.0
 ---
 
