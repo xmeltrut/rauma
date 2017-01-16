@@ -26,6 +26,13 @@ abstract class Controller
     private $request;
 
     /**
+     * GET collection.
+     *
+     * @var \Rauma\Common\Collection
+     */
+    private $getCollection;
+
+    /**
      * POST collection.
      *
      * @var \Rauma\Common\Collection
@@ -73,6 +80,20 @@ abstract class Controller
     protected function isPost()
     {
         return ($this->request->getMethod() == 'POST');
+    }
+
+    /**
+     * Get GET data as a Collection.
+     *
+     * @return Collection
+     */
+    protected function getQuery()
+    {
+        if ($this->getCollection === null) {
+            $this->getCollection = new Collection($this->request->getQueryParams());
+        }
+
+        return $this->getCollection;
     }
 
     /**

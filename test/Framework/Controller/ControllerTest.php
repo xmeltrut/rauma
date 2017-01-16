@@ -38,6 +38,18 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(true, $this->controller->utIsPost());
     }
 
+    public function testGetQueryData()
+    {
+        $this->request->expects($this->once())->method('getQueryParams')->willReturn([
+            'c' => 'd'
+        ]);
+
+        $collection = $this->controller->utGetQuery();
+
+        $this->assertInstanceOf('Rauma\Common\Collection', $collection);
+        $this->assertEquals('d', $collection['c']);
+    }
+
     public function testGetPostData()
     {
         $this->request->expects($this->once())->method('getParsedBody')->willReturn([

@@ -41,6 +41,16 @@ class ConcreteController extends Controller
     }
 
     /**
+     * Exposes getQuery method.
+     *
+     * @return Collection
+     */
+    public function utGetQuery()
+    {
+        return $this->getQuery();
+    }
+
+    /**
      * Exposes getPost method.
      *
      * @return Collection

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.3
+---
+* Add `getQuery` method to base controller, returning a `Collection`
+
 3.2
 ---
 * Add sitemap generator
