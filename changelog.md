@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.4
+---
+* Add `setKeywords` method to `Meta` templating class
+
 3.3
 ---
 * Add `getQuery` method to base controller, returning a `Collection`

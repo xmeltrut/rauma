@@ -93,6 +93,17 @@ class Meta
     {
         return implode(',', $this->keywords);
     }
+
+    /**
+     * Replace the keywords with a new list.
+     *
+     * @param array $keywords Keywords to use.
+     * @return void
+     */
+    public function setKeywords(array $keywords)
+    {
+        $this->keywords = $keywords;
+    }
     
     /**
      * Add an array of keywords.

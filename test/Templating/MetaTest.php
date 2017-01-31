@@ -26,6 +26,9 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
         $meta->addKeywords(['a', 'b']);
         $this->assertEquals('a,b', $meta->getKeywords());
+
+        $meta->setKeywords(['c', 'd']);
+        $this->assertEquals('c,d', $meta->getKeywords());
     }
 
     public function testDescription()
