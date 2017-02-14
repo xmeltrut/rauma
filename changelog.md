@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.6
+---
+* Ability to store arbitary user data in the `Authorisation` object
+
 3.5
 ---
 * Updated Aura Session to version 2.1

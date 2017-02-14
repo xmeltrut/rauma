@@ -29,15 +29,17 @@ class Authorisation
      * @param integer $id          Unique ID.
      * @param string  $description Name for the user.
      * @param array   $roles       List of roles the user has.
+     * @param array   $attributes  List of arbitary attributes.
      *
      * @return null
      */
-    public function authoriseUser($id, $description, $roles = [])
+    public function authoriseUser($id, $description, $roles = [], $attributes = [])
     {
         $this->segment->set('id', $id);
         $this->segment->set('description', $description);
         $this->segment->set('authorised', true);
         $this->segment->set('roles', $roles);
+        $this->segment->set('attributes', $attributes);
         $this->session->regenerateId();
     }
 
@@ -85,6 +87,18 @@ class Authorisation
             is_array($roles) &&
             in_array($role, $roles)
         );
+    }
+
+    /**
+     * Retrive an attribute.
+     *
+     * @param string $key Attribute key.
+     * @return mixed
+     */
+    public function getAttribute($key)
+    {
+        $attributes = $this->segment->get('attributes');
+        return isset($attributes[$key]) ? $attributes[$key] : null;
     }
 
     /**

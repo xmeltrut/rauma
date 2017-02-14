@@ -11,7 +11,7 @@ class AuthorisationTest extends \PHPUnit_Framework_TestCase
         $segment = $this->getMockBuilder('Aura\\Session\\Segment')
                         ->disableOriginalConstructor()
                         ->getMock();
-        $segment->expects($this->exactly(4))->method('set');
+        $segment->expects($this->exactly(5))->method('set');
 
         $session = $this->getMockBuilder('Aura\\Session\\Session')
                         ->disableOriginalConstructor()
@@ -87,6 +87,24 @@ class AuthorisationTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals(true, $auth->hasRole('role1'));
         $this->assertEquals(false, $auth->hasRole('role2'));
+    }
+
+    public function testAttributes()
+    {
+        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        $segment->expects($this->exactly(2))->method('get')->with('attributes')->willReturn(['test' => 10]);
+
+        $session = $this->getMockBuilder('Aura\\Session\\Session')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        $session->method('getSegment')->willReturn($segment);
+
+        $auth = new Authorisation($session);
+
+        $this->assertEquals(10, $auth->getAttribute('test'));
+        $this->assertEquals(null, $auth->getAttribute('not-there'));
     }
 
     public function testHashAndVerifyPassword()
