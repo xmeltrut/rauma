@@ -1,6 +1,11 @@
 Changelog
 =========
 
+3.5
+---
+* Updated Aura Session to version 2.1
+* Add `getJson` method to `Controller` class
+
 3.4
 ---
 * Add `setKeywords` method to `Meta` templating class

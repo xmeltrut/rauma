@@ -61,4 +61,19 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Rauma\Common\Collection', $collection);
         $this->assertEquals('b', $collection['a']);
     }
+
+    public function testGetJson()
+    {
+        $body = $this->getMockBuilder('Zend\Diactoros\PhpInputStream')
+                     ->disableOriginalConstructor()
+                     ->getMock();
+        $body->method('getContents')->willReturn('{"a":"b"}');
+
+        $this->request->expects($this->once())->method('getBody')->willReturn($body);
+
+        $object = $this->controller->utGetJson();
+
+        $this->assertInstanceOf('\stdClass', $object);
+        $this->assertEquals('b', $object->a);
+    }
 }

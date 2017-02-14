@@ -59,4 +59,14 @@ class ConcreteController extends Controller
     {
         return $this->getPost();
     }
+
+    /**
+     * Exposes getJson method.
+     *
+     * @return object
+     */
+    public function utGetJson()
+    {
+        return $this->getJson();
+    }
 }

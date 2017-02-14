@@ -109,4 +109,14 @@ abstract class Controller
 
         return $this->postCollection;
     }
+
+    /**
+     * Helper method to decode JSON bodies.
+     *
+     * @return object
+     */
+    protected function getJson()
+    {
+        return json_decode($this->getRequest()->getBody()->getContents());
+    }
 }
