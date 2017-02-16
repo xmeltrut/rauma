@@ -15,7 +15,7 @@ If the required template does not exist, Rauma will serve some simple default HT
 Error reporting
 ---------------
 
-Rauma consults an environmental variable named `app.display_errors`. If an exception is thrown, and this is set to 1, it will re-throw the error so you can see it. If not, the error is supressed and the standard errorp age is shown.
+Rauma consults an environmental variable named `app.display_errors`. If an exception is thrown, and this is set to 1, it will re-throw the error so you can see it. If not, the error is supressed and the standard error page is shown.
 
 You can see this in Apache using the following directive:
 
@@ -67,4 +67,4 @@ class ExceptionController extends PageController implements ExceptionControllerI
 }
 ```
 
-You do not need to list the exception controller in your mail list of controllers.
+You do not need to list the exception controller in your main list of controllers. `app.display_errors` is not used if you override the `error` function.

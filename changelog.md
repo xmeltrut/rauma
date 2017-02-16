@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.6.1
+-----
+* Updating documentation on error handling
+
 3.6
 ---
 * Ability to store arbitary user data in the `Authorisation` object
