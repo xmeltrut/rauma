@@ -32,4 +32,15 @@ class Templating
     {
         return $this->engine->render($template, $data);
     }
+
+    /**
+     * Check if a template exists.
+     *
+     * @param string $template Template file.
+     * @return boolean
+     */
+    public function exists($template)
+    {
+        return $this->engine->getLoader()->exists($template);
+    }
 }

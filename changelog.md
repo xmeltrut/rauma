@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.7
+---
+* Add `exists` method to `Templating` class
+
 3.6.1
 -----
 * Updating documentation on error handling

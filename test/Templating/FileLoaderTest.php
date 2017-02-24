@@ -25,6 +25,10 @@ class FileLoaderTest extends \PHPUnit_Framework_TestCase
         $templateContents = $loader->load('a.html');
 
         $this->assertEquals('b-html', $templateContents);
+
+        // test exists function
+        $this->assertEquals(true, $loader->exists('a.html'));
+        $this->assertEquals(false, $loader->exists('c.html'));
     }
 
     /**

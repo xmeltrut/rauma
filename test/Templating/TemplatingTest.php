@@ -22,4 +22,29 @@ class TemplatingTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('html', $result);
     }
+
+    public function testExists()
+    {
+        $loaderMock = $this->getMockBuilder('Rauma\Templating\FileLoader')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+
+        $loaderMock->expects($this->once())
+                   ->method('exists')
+                   ->with('page.html')
+                   ->willReturn(true);
+
+        $engineMock = $this->getMockBuilder('Mustache_Engine')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+
+        $engineMock->expects($this->once())
+                   ->method('getLoader')
+                   ->willReturn($loaderMock);
+
+        $templating = new Templating($engineMock);
+        $result = $templating->exists('page.html');
+
+        $this->assertEquals(true, $result);
+    }
 }

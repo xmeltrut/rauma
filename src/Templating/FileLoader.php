@@ -80,4 +80,23 @@ class FileLoader implements Mustache_Loader
 
         throw new Exception\TemplateNotFoundException($name);
     }
+
+    /**
+     * Check if a template file exists.
+     *
+     * @param string $name Template name.
+     * @return boolean
+     */
+    public function exists($name)
+    {
+        foreach (array_reverse($this->directories) as $directory) {
+            $path = sprintf('%s/%s', $directory, $name);
+
+            if (file_exists($path)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
