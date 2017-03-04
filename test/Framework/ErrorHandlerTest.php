@@ -15,7 +15,8 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
     {
         $di = $this->getMock('Rauma\Service\Container');
         $request = $this->getMock('Psr\Http\Message\ServerRequestInterface');
+        $controller = $this->getMockBuilder('Rauma\Framework\Controller\ExceptionController')->disableOriginalConstructor()->getMock();
 
-        ErrorHandler::register($di, $request);
+        ErrorHandler::register($di, $request, $controller);
     }
 }

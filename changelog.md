@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.8
+---
+* Custom error handlers are now supported for recoverable errors
+
 3.7
 ---
 * Add `exists` method to `Templating` class

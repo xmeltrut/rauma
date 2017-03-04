@@ -131,7 +131,7 @@ class Dispatcher
      * @param ServerRequestInterface $request Request object.
      * @return ExceptionControllerInterface
      */
-    protected function getExceptionController(ServerRequestInterface $request)
+    public function getExceptionController(ServerRequestInterface $request)
     {
         if (isset($this->config['exceptionController'])) {
             $className = $this->config['exceptionController'];

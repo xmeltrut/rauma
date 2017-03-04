@@ -70,7 +70,11 @@ class Core
         
         $dispatcher = new Dispatcher($this->config['routing'], $di);
 
-        ErrorHandler::register($di, $request);
+        ErrorHandler::register(
+            $di,
+            $request,
+            $dispatcher->getExceptionController($request)
+        );
 
         $response = $dispatcher->dispatch($request);
         return new Response($response);
