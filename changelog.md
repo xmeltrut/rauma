@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.9
+---
+* Add string case manipulation helpers to templating engine
+
 3.8
 ---
 * Custom error handlers are now supported for recoverable errors

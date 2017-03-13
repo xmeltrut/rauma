@@ -28,6 +28,15 @@ class TemplatingFactory
             'partials_loader' => $fileLoader
         ]);
 
+        $engine->addHelper('case', [
+            'lower' => function ($value) {
+                return strtolower((string) $value);
+            },
+            'upper' => function ($value) {
+                return strtoupper((string) $value);
+            }
+        ]);
+
         return new Templating($engine);
     }
 }
