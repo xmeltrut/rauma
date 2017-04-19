@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.10
+----
+* Authorisation will now reject passwords that are blank or null
+
 3.9
 ---
 * Add string case manipulation helpers to templating engine

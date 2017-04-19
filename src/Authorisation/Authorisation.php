@@ -152,6 +152,10 @@ class Authorisation
      */
     public function verifyPassword($hash, $password)
     {
+        if ($hash === null || $hash === '' || $password === null || $password === '') {
+            return false;
+        }
+
         return password_verify($password, $hash);
     }
 }

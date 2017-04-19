@@ -123,6 +123,18 @@ class AuthorisationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $auth->verifyPassword($hash, 'different-pass'));
     }
 
+    public function testVerifyBlankPasswords()
+    {
+        $session = $this->getMockBuilder('Aura\\Session\\Session')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+
+        $auth = new Authorisation($session);
+
+        $this->assertEquals(false, $auth->verifyPassword(null, 'password'));
+        $this->assertEquals(false, $auth->verifyPassword('hash', ''));
+    }
+
     public function testValidateRoute()
     {
         $segment = $this->getMockBuilder('Aura\\Session\\Segment')
