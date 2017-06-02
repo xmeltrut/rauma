@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.10.1
+------
+* Only instanciate the exception controller if there is an exception
+
 3.10
 ----
 * Authorisation will now reject passwords that are blank or null

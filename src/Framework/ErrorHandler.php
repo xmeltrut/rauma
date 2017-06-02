@@ -16,11 +16,11 @@ class ErrorHandler
     /**
      * Constructor.
      *
-     * @param \Rauma\Service\Container                 $di         Services
-     * @param \Psr\Http\Message\ServerRequestInterface $request    Request
-     * @param ExceptionControllerInterface             $controller Controller.
+     * @param \Rauma\Service\Container                 $di         Services.
+     * @param \Psr\Http\Message\ServerRequestInterface $request    Request.
+     * @param ExceptionControllerInterface             $controller Controller name.
      */
-    public function __construct(Container $di, ServerRequestInterface $request, ExceptionControllerInterface $controller)
+    public function __construct(Container $di, ServerRequestInterface $request, $controller)
     {
         $this->di = $di;
         $this->request = $request;
@@ -39,7 +39,8 @@ class ErrorHandler
      */
     public function handleError($num, $string, $file, $line)
     {
-        $response = $this->controller->error(new Exception(sprintf(
+        $controller = new $this->controller($this->di, $this->request);
+        $response = $controller->error(new Exception(sprintf(
             'PHP error: %s (%s), in %s:%s',
             $string,
             $num,
@@ -56,10 +57,10 @@ class ErrorHandler
      *
      * @param Container                    $di         Services.
      * @param ServerRequestInterface       $request    Request.
-     * @param ExceptionControllerInterface $controller Controller.
+     * @param ExceptionControllerInterface $controller Controller name.
      * @return null
      */
-    public static function register($di, $request, ExceptionControllerInterface $controller)
+    public static function register($di, $request, $controller)
     {
         $errorHandler = new ErrorHandler($di, $request, $controller);
         set_error_handler([$errorHandler, 'handleError']);

@@ -73,7 +73,7 @@ class Core
         ErrorHandler::register(
             $di,
             $request,
-            $dispatcher->getExceptionController($request)
+            $dispatcher->getExceptionController()
         );
 
         $response = $dispatcher->dispatch($request);

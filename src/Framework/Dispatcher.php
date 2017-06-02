@@ -5,7 +5,6 @@ namespace Rauma\Framework;
 use Rauma\Authorisation\Exception\ForbiddenException;
 use Rauma\Authorisation\Exception\UnauthorisedException;
 use Rauma\Framework\Controller\ExceptionController;
-use Rauma\Framework\Controller\ExceptionControllerInterface;
 use Rauma\Framework\Exception\NotFoundException;
 use Rauma\Service\Container;
 use Aura\Router\RouterContainer;
@@ -14,6 +13,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\IndexedReader;
 use Doctrine\Common\Cache\ApcCache;
 use Psr\Http\Message\ServerRequestInterface;
+use ReflectionClass;
 
 /**
  * Handles the dispatch of a request to a controller.
@@ -70,16 +70,20 @@ class Dispatcher
             $controller = new $controllerName($this->di, $request);
             $response = call_user_func_array([$controller, $methodName], $route->attributes);
         } catch (NotFoundException $e) {
-            $controller = $this->getExceptionController($request);
+            $controllerName = $this->getExceptionController();
+            $controller = new $controllerName($this->di, $request);
             $response = $controller->notFound();
         } catch (UnauthorisedException $e) {
-            $controller = $this->getExceptionController($request);
+            $controllerName = $this->getExceptionController();
+            $controller = new $controllerName($this->di, $request);
             $response = $controller->unauthorised();
         } catch (ForbiddenException $e) {
-            $controller = $this->getExceptionController($request);
+            $controllerName = $this->getExceptionController();
+            $controller = new $controllerName($this->di, $request);
             $response = $controller->forbidden();
         } catch (\Exception $e) {
-            $controller = $this->getExceptionController($request);
+            $controllerName = $this->getExceptionController();
+            $controller = new $controllerName($this->di, $request);
             $response = $controller->error($e);
         }
         
@@ -128,23 +132,22 @@ class Dispatcher
     /**
      * Get the exception controller.
      *
-     * @param ServerRequestInterface $request Request object.
-     * @return ExceptionControllerInterface
+     * @return string
      */
-    public function getExceptionController(ServerRequestInterface $request)
+    public function getExceptionController()
     {
         if (isset($this->config['exceptionController'])) {
             $className = $this->config['exceptionController'];
 
             if (class_exists($className)) {
-                $class = new $className($this->di, $request);
+                $reflection = new ReflectionClass($className);
 
-                if ($class instanceof ExceptionControllerInterface) {
-                    return $class;
+                if ($reflection->implementsInterface('Rauma\Framework\Controller\ExceptionControllerInterface')) {
+                    return $className;
                 }
             }
         }
 
-        return new ExceptionController($this->di, $request);
+        return 'Rauma\Framework\Controller\ExceptionController';
     }
 }
