@@ -83,6 +83,16 @@ abstract class Controller
     }
 
     /**
+     * Convience method for checking if the user is PUTing.
+     *
+     * @return boolean
+     */
+    protected function isPut()
+    {
+        return ($this->request->getMethod() == 'PUT');
+    }
+
+    /**
      * Get GET data as a Collection.
      *
      * @return Collection

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.11
+----
+* Add `isPut` method to `Controller` class
+
 3.10.1
 ------
 * Only instanciate the exception controller if there is an exception

@@ -38,6 +38,13 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(true, $this->controller->utIsPost());
     }
 
+    public function testRequestHelperPut()
+    {
+        $this->request->expects($this->once())->method('getMethod')->willReturn('PUT');
+
+        $this->assertEquals(true, $this->controller->utIsPut());
+    }
+
     public function testGetQueryData()
     {
         $this->request->expects($this->once())->method('getQueryParams')->willReturn([

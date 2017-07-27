@@ -41,6 +41,16 @@ class ConcreteController extends Controller
     }
 
     /**
+     * Exposes isPut method.
+     *
+     * @return boolean
+     */
+    public function utIsPut()
+    {
+        return $this->isPut();
+    }
+
+    /**
      * Exposes getQuery method.
      *
      * @return Collection
