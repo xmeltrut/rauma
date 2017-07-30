@@ -29,7 +29,7 @@ Routes
 Routes are added using annotations. You can add dynamic sections, with an optional regular expression to validate them.
 
 ```
-@Route("/some-url/{year:[0-0]+}/{slug}")
+@Route("/some-url/{year:[0-9]+}/{slug}")
 ```
 
 You can also specify methods allowed. If the method attribute is not specified, it defaults to `get`. Any time you add a `get`, a `head` is also added.
