@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.12
+----
+* Add `addHelper` method to `Templating` class
+
 3.11
 ----
 * Add `isPut` method to `Controller` class

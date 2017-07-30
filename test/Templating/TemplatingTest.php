@@ -47,4 +47,18 @@ class TemplatingTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(true, $result);
     }
+
+    public function testAddHelper()
+    {
+        $engineMock = $this->getMockBuilder('Mustache_Engine')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+
+        $engineMock->expects($this->once())
+                   ->method('addHelper')
+                   ->with('helper-name', ['helpers']);
+
+        $templating = new Templating($engineMock);
+        $templating->addHelper('helper-name', ['helpers']);
+    }
 }

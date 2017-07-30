@@ -43,4 +43,15 @@ class Templating
     {
         return $this->engine->getLoader()->exists($template);
     }
+
+    /**
+     * Add a helper to the Mustache engine.
+     *
+     * @param string $name   Name.
+     * @param mixed  $helper Closure or array of closures.
+     */
+    public function addHelper($name, $helper)
+    {
+        $this->engine->addHelper($name, $helper);
+    }
 }
