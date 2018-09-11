@@ -40,12 +40,11 @@ namespace App\Controller;
 
 use Rauma\Framework\Controller\PageController;
 use Rauma\Framework\Controller\ExceptionControllerInterface;
-use Exception;
 use Zend\Diactoros\Response\HtmlResponse;
 
 class ExceptionController extends PageController implements ExceptionControllerInterface
 {
-    public function error(Exception $exception)
+    public function error($exception)
     {
         return new HtmlResponse('Error', 500);
     }
