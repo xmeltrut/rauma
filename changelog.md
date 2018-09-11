@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.13
+----
+* Remove type expectations from exception handling to support both PHP 5 and 7
+
 3.12
 ----
 * Add `addHelper` method to `Templating` class

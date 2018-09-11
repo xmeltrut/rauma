@@ -2,7 +2,6 @@
 
 namespace Rauma\Framework\Controller;
 
-use Exception;
 use Zend\Diactoros\Response\RedirectResponse;
 
 /**
@@ -13,10 +12,10 @@ class ExceptionController extends PageController implements ExceptionControllerI
     /**
      * Called when there is a 500 Server Error.
      *
-     * @param \Exception $exception Exception
+     * @param \Throwable $exception Exception
      * @return \Zend\Diactoros\Response
      */
-    public function error(Exception $exception)
+    public function error($exception)
     {
         if (getenv('app.display_errors')) {
             throw $exception;

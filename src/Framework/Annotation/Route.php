@@ -2,6 +2,8 @@
 
 namespace Rauma\Framework\Annotation;
 
+use Exception;
+
 /**
  * Provides a route annotation for controllers.
  *
@@ -94,7 +96,7 @@ class Route
         }
 
         if (count($filteredVerbs) == 0) {
-            throw new \Exception("No valid verbs were found in '$verbs'.");
+            throw new Exception("No valid verbs were found in '$verbs'.");
         }
 
         return $filteredVerbs;
