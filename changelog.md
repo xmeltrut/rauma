@@ -1,6 +1,10 @@
 Changelog
 =========
 
+3.14
+----
+* Validate we have the database config before trying to use it
+
 3.13
 ----
 * Remove type expectations from exception handling to support both PHP 5 and 7

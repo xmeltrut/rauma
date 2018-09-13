@@ -4,6 +4,7 @@ namespace Rauma\Database;
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use Exception;
 
 class DatabaseFactory
 {
@@ -17,6 +18,9 @@ class DatabaseFactory
         $isDevMode = true;
         $paths = [$appPath . '/' . $config['entityPath']];
         $metadata = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+
+        // check we have the config
+        self::validateConfig();
 
         // gather parameters
         $host = (getenv('app.database.host')) ? getenv('app.database.host') : 'localhost';
@@ -33,5 +37,16 @@ class DatabaseFactory
         
         // obtaining the entity manager
         return EntityManager::create($dbParams, $metadata);
+    }
+
+    private static function validateConfig()
+    {
+        $required = ['app.database.user', 'app.database.password', 'app.database.name'];
+
+        foreach ($required as $key) {
+            if (!getenv($key)) {
+                throw new Exception(sprintf('Missing database config item: "%s"', $key));
+            }
+        }
     }
 }
