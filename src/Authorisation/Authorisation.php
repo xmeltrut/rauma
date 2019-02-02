@@ -107,7 +107,7 @@ class Authorisation
      */
     public function isLoggedIn()
     {
-        return ($this->segment->get('authorised'));
+        return $this->segment->get('authorised') || false;
     }
 
     /**
