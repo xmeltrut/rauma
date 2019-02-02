@@ -2,6 +2,7 @@
 
 namespace Rauma\Framework;
 
+use Rauma\Authorisation\AuthorisationManager;
 use Rauma\Authorisation\Exception\ForbiddenException;
 use Rauma\Authorisation\Exception\UnauthorisedException;
 use Rauma\Framework\Controller\ExceptionController;
