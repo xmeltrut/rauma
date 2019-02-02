@@ -6,6 +6,7 @@ Changelog
 * Add `Response` proxy objects that can be called from the Rauma namespace
 * Add `isLoggedIn` method to `Authorisation` class
 * Upgraded all dependencies and moved to PHP 7.1
+* Remove `description` from `Authorisation` in favour of attributes
 
 3.14
 ----

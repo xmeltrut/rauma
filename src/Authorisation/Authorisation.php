@@ -27,16 +27,14 @@ class Authorisation
      * Set up the user to give them access.
      *
      * @param integer $id          Unique ID.
-     * @param string  $description Name for the user.
      * @param array   $roles       List of roles the user has.
      * @param array   $attributes  List of arbitary attributes.
      *
      * @return null
      */
-    public function authoriseUser($id, $description, $roles = [], $attributes = [])
+    public function authoriseUser($id, $roles = [], $attributes = [])
     {
         $this->segment->set('id', $id);
-        $this->segment->set('description', $description);
         $this->segment->set('authorised', true);
         $this->segment->set('roles', $roles);
         $this->segment->set('attributes', $attributes);
@@ -61,16 +59,6 @@ class Authorisation
     public function getId()
     {
         return $this->segment->get('id');
-    }
-
-    /**
-     * Get the user description.
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->segment->get('description');
     }
 
     /**

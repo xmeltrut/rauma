@@ -14,12 +14,12 @@ To log a user in:
 ```php
 $this->service('auth')->authoriseUser(
     $user->getId(),
-    sprintf('%s <%s>', $user->getFirstName(), $user->getEmail()),
-    $user->getRoleKeys()
+    $user->getRoleKeys(),
+    ['name' => 'Jane']
 );
 ```
 
-The params are user ID, user description and an array of roles as strings.
+The params are user ID, and optional arrays of roles and attributes.
 
 To log a user out:
 
@@ -32,7 +32,6 @@ Other useful methods:
 | Method         | Use                                          |
 | -------------- | -------------------------------------------- |
 | getId          | Get the user's ID.                           |
-| getDescription | Get the friendly description for the user.   |
 | hasRole        | Check a user has a specific role/permission. |
 | hashPassword   | Used for registrations.                      |
 | isLoggedIn     | Is the user currently logged in?             |

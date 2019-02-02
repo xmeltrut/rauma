@@ -12,7 +12,7 @@ class AuthorisationTest extends TestCase
         $segment = $this->getMockBuilder('Aura\\Session\\Segment')
                         ->disableOriginalConstructor()
                         ->getMock();
-        $segment->expects($this->exactly(5))->method('set');
+        $segment->expects($this->exactly(4))->method('set');
         $segment->method('get')->willReturn(true);
 
         $session = $this->getMockBuilder('Aura\\Session\\Session')
@@ -22,7 +22,7 @@ class AuthorisationTest extends TestCase
         $session->expects($this->once())->method('regenerateId');
 
         $auth = new Authorisation($session);
-        $auth->authoriseUser(100, 'Test McTest');
+        $auth->authoriseUser(100);
 
         $this->assertSame(true, $auth->isLoggedIn());
     }
@@ -60,22 +60,6 @@ class AuthorisationTest extends TestCase
 
         $auth = new Authorisation($session);
         $auth->getId();
-    }
-
-    public function testGetDescription()
-    {
-        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
-                        ->disableOriginalConstructor()
-                        ->getMock();
-        $segment->expects($this->exactly(1))->method('get')->with('description');
-
-        $session = $this->getMockBuilder('Aura\\Session\\Session')
-                        ->disableOriginalConstructor()
-                        ->getMock();
-        $session->method('getSegment')->willReturn($segment);
-
-        $auth = new Authorisation($session);
-        $auth->getDescription();
     }
 
     public function testHasRole()
