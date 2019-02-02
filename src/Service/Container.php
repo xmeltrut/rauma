@@ -28,7 +28,7 @@ class Container
      */
     public function has($key)
     {
-        return isset($this->services[$key]);
+        return isset($this->services[$key]) || isset($this->defaults[$key]);
     }
 
     /**
