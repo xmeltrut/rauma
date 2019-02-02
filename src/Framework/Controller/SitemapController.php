@@ -4,7 +4,7 @@ namespace Rauma\Framework\Controller;
 
 use Rauma\Framework\Annotation\Route;
 use Rauma\Sitemap\Sitemap;
-use Zend\Diactoros\Response\TextResponse;
+use Rauma\Messaging\Response\TextResponse;
 
 /**
  * Provide helpers to render sitemaps.

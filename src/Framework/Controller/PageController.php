@@ -4,7 +4,7 @@ namespace Rauma\Framework\Controller;
 
 use Rauma\Service\Container;
 use Rauma\Templating\Meta;
-use Zend\Diactoros\Response\HtmlResponse;
+use Rauma\Messaging\Response\HtmlResponse;
 
 /**
  * Child class of Controller. This adds additional functionality
@@ -45,7 +45,7 @@ abstract class PageController extends Controller
      * @param string  $template Template file.
      * @param array   $data     Template data.
      * @param integer $status   Status code.
-     * @return \Zend\Diactoros\Response\HtmlResponse
+     * @return HtmlResponse
      */
     protected function render($template, array $data = [], $status = 200)
     {
@@ -60,7 +60,7 @@ abstract class PageController extends Controller
      * @param array   $data     Template data.
      * @param array   $pageData Data to be included in page rendering.
      * @param integer $status   Status code.
-     * @return \Zend\Diactoros\Response\HtmlResponse
+     * @return HtmlResponse
      */
     protected function renderPage($template, array $data = [], array $pageData = [], $status = 200)
     {

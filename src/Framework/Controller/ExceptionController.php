@@ -2,7 +2,7 @@
 
 namespace Rauma\Framework\Controller;
 
-use Zend\Diactoros\Response\RedirectResponse;
+use Rauma\Messaging\Response\RedirectResponse;
 
 /**
  * Default controller for handling application exceptions.
@@ -13,7 +13,7 @@ class ExceptionController extends PageController implements ExceptionControllerI
      * Called when there is a 500 Server Error.
      *
      * @param \Throwable $exception Exception
-     * @return \Zend\Diactoros\Response
+     * @return HtmlResponse
      */
     public function error($exception)
     {
@@ -27,7 +27,7 @@ class ExceptionController extends PageController implements ExceptionControllerI
     /**
      * Called when there is a 403 Forbidden.
      *
-     * @return \Zend\Diactoros\Response
+     * @return HtmlResponse
      */
     public function forbidden()
     {
@@ -37,7 +37,7 @@ class ExceptionController extends PageController implements ExceptionControllerI
     /**
      * Called when there is a 404 Not Found.
      *
-     * @return \Zend\Diactoros\Response
+     * @return HtmlResponse
      */
     public function notFound()
     {
@@ -47,7 +47,7 @@ class ExceptionController extends PageController implements ExceptionControllerI
     /**
      * Called when there is a 401 Unauathorised.
      *
-     * @return \Zend\Diactoros\RedirectResponse
+     * @return RedirectResponse
      */
     public function unauthorised()
     {
