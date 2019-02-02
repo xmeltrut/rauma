@@ -113,34 +113,13 @@ class Authorisation
     }
 
     /**
-     * Check if a user has access to a particular route.
+     * Is the user currently logged in?
      *
-     * @param array $authInfo Array of auth information
      * @return boolean
      */
-    public function validateRoute($authInfo)
+    public function isLoggedIn()
     {
-        if (isset($authInfo['required']) && $authInfo['required']) {
-            if (!$this->segment->get('authorised')) {
-                throw new Exception\UnauthorisedException;
-            }
-        }
-
-        if (isset($authInfo['allowed'])) {
-            $roleInWhitelist = false;
-
-            foreach ($authInfo['allowed'] as $roleAllowed) {
-                if (in_array($roleAllowed, $this->segment->get('roles'))) {
-                    $roleInWhitelist = true;
-                }
-            }
-            
-            if (!$roleInWhitelist) {
-                throw new Exception\ForbiddenException;
-            }
-        }
-
-        return true;
+        return ($this->segment->get('authorised'));
     }
 
     /**

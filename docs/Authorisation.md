@@ -19,6 +19,8 @@ $this->service('auth')->authoriseUser(
 );
 ```
 
+The params are user ID, user description and an array of roles as strings.
+
 To log a user out:
 
 ```php
@@ -30,8 +32,10 @@ Other useful methods:
 | Method         | Use                                          |
 | -------------- | -------------------------------------------- |
 | getId          | Get the user's ID.                           |
+| getDescription | Get the friendly description for the user.   |
 | hasRole        | Check a user has a specific role/permission. |
 | hashPassword   | Used for registrations.                      |
+| isLoggedIn     | Is the user currently logged in?             |
 | verifyPassword | Check a password against a hash.             |
 
 Require login

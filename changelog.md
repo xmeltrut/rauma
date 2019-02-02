@@ -4,6 +4,8 @@ Changelog
 4.00
 ----
 * Add `Response` proxy objects that can be called from the Rauma namespace
+* Add `isLoggedIn` method to `Authorisation` class
+* Upgraded all dependencies and moved to PHP 7.1
 
 3.14
 ----

@@ -64,7 +64,8 @@ class Dispatcher
                 throw new NotFoundException;
             }
 
-            $this->di->get('auth')->validateRoute($route->handler['auth']);
+            $authorisationManager = new AuthorisationManager($this->di->get('auth'));
+            $authorisationManager->validateRoute($route->handler['auth']);
             $controllerName = $route->handler['controller'];
             $methodName = $route->handler['method'];
             $controller = new $controllerName($this->di, $request);
