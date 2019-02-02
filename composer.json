@@ -21,8 +21,8 @@
         "php": ">=7.1.0",
         "aura/router": "3.0.*",
         "aura/session": "2.1.*",
-        "doctrine/annotations": "1.2.*",
-        "doctrine/orm": "2.5.*",
+        "doctrine/annotations": "1.6.*",
+        "doctrine/orm": "2.6.*",
         "mustache/mustache": "2.12.*",
         "symfony/yaml": "4.2.*",
         "zendframework/zend-diactoros": "1.3.*"
