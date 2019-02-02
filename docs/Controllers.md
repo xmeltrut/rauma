@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use Rauma\Framework\Annotation\Route;
 use Rauma\Framework\Controller\PageController;
+use Rauma\Messaging\Response\JsonResponse;
 
 class TestController extends PageController
 {
@@ -19,6 +20,14 @@ class TestController extends PageController
     public function index()
     {
         return $this->renderPage('homepage.html');
+    }
+
+    /**
+     * @Route("/json")
+     */
+    public function json()
+    {
+        return new JsonResponse(['Hello' => 'World!']);
     }
 }
 ```
