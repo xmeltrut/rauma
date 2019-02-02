@@ -30,7 +30,7 @@ class Authorisation
      * @param array   $roles       List of roles the user has.
      * @param array   $attributes  List of arbitary attributes.
      *
-     * @return null
+     * @return void
      */
     public function authoriseUser($id, $roles = [], $attributes = [])
     {
@@ -44,7 +44,7 @@ class Authorisation
     /**
      * Log a user out.
      *
-     * @return null
+     * @return void
      */
     public function deauthoriseUser()
     {
