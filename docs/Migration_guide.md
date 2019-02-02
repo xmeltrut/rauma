@@ -1,6 +1,18 @@
 Migration guide
 ===============
 
+4.0
+---
+
+The breaking change to be aware of is that the `description` property has now
+disappeared from the `Authorisation` class. If you want to store more information
+than the user ID, use the attributes array.
+
+`4.0` also bumps the PHP version requirement to `7.1`.
+
+Optionally, you may also want to start using the new `Response` objects Rauma
+now provides, and the `isLoggedIn` auth service fucntion.
+
 3.2
 ---
 
