@@ -56,3 +56,10 @@ Use the `Allowed` annotation to restrict a resource to a particular group.
 ```
 @Allowed("admins,users")
 ```
+
+Extending
+---------
+
+You can extend the `Authorisation` class and initialise it in your `config.yml`
+file like any other service. Using the service name `auth` will allow Rauma
+to pick it up and use it for annoted authorisations.

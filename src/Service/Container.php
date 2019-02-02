@@ -21,6 +21,17 @@ class Container
     private $defaults = [];
 
     /**
+     * Is a service registered?
+     *
+     * @param string $key Service name.
+     * @return boolean
+     */
+    public function has($key)
+    {
+        return isset($this->services[$key]);
+    }
+
+    /**
      * Get a service.
      *
      * @param string $key Service name.

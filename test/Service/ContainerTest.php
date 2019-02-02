@@ -7,16 +7,18 @@ use PHPUnit\Framework\TestCase;
 
 class ContainerTest extends TestCase
 {
-    public function testSet()
+    public function testGetSetHas()
     {
         $mockService = new \StdClass;
         $di = new Container;
 
-        $this->assertEquals(null, $di->get('test'));
+        $this->assertSame(false, $di->has('test'));
+        $this->assertSame(null, $di->get('test'));
 
         $di->set('test', $mockService);
 
-        $this->assertEquals($mockService, $di->get('test'));
+        $this->assertSame(true, $di->has('test'));
+        $this->assertSame($mockService, $di->get('test'));
     }
 
     public function testInitialise()

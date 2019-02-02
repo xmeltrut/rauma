@@ -52,17 +52,19 @@ class Core
             [$this->appPath, $this->getConfig('templating')]
         );
 
-        $di->register(
-            'auth',
-            'Rauma\Authorisation\AuthorisationFactory::create',
-            [$session]
-        );
-
         if (isset($this->config['database'])) {
             $di->register(
                 'db',
                 'Rauma\Database\DatabaseFactory::create',
                 [$this->appPath, $this->config['database']]
+            );
+        }
+
+        if (!$di->has('auth')) {
+            $di->register(
+                'auth',
+                'Rauma\Authorisation\AuthorisationFactory::create',
+                [$session]
             );
         }
 
