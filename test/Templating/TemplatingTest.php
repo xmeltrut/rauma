@@ -3,8 +3,9 @@
 namespace Rauma\Test\Templating;
 
 use Rauma\Templating\Templating;
+use PHPUnit\Framework\TestCase;
 
-class TemplatingTest extends \PHPUnit_Framework_TestCase
+class TemplatingTest extends TestCase
 {
     public function testRender()
     {

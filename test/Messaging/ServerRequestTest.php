@@ -3,8 +3,9 @@
 namespace Rauma\Test\Messaging;
 
 use Rauma\Messaging\ServerRequest;
+use PHPUnit\Framework\TestCase;
 
-class ServerRequestTest extends \PHPUnit_Framework_TestCase
+class ServerRequestTest extends TestCase
 {
     public function testFromGlobals()
     {

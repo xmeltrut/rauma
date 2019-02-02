@@ -3,8 +3,9 @@
 namespace Rauma\Test\Authorisation;
 
 use Rauma\Authorisation\AuthorisationFactory;
+use PHPUnit\Framework\TestCase;
 
-class AuthorisationFactoryTest extends \PHPUnit_Framework_TestCase
+class AuthorisationFactoryTest extends TestCase
 {
     public function testCreate()
     {

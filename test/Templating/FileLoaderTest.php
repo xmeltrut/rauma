@@ -4,8 +4,9 @@ namespace Rauma\Test\Templating;
 
 use Rauma\Templating\FileLoader;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 
-class FileLoaderTest extends \PHPUnit_Framework_TestCase
+class FileLoaderTest extends TestCase
 {
     public function testLoading()
     {

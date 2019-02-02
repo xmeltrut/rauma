@@ -3,8 +3,9 @@
 namespace Rauma\Test\Messaging\Response;
 
 use Rauma\Messaging\Response\HtmlResponse;
+use PHPUnit\Framework\TestCase;
 
-class HtmlResponseTest extends \PHPUnit_Framework_TestCase
+class HtmlResponseTest extends TestCase
 {
     public function testConstruct()
     {

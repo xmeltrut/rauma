@@ -4,8 +4,9 @@ namespace Rauma\Test\Framework\Config;
 
 use Rauma\Framework\Config\ConfigFactory;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 
-class ConfigFactoryTest extends \PHPUnit_Framework_TestCase
+class ConfigFactoryTest extends TestCase
 {
     public function testLoad()
     {

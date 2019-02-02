@@ -3,8 +3,9 @@
 namespace Rauma\Test\Authorisation\Exception;
 
 use Rauma\Authorisation\Exception\ForbiddenException;
+use PHPUnit\Framework\TestCase;
 
-class ForbiddenExceptionTest extends \PHPUnit_Framework_TestCase
+class ForbiddenExceptionTest extends TestCase
 {
     public function testException()
     {

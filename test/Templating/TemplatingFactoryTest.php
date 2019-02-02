@@ -3,8 +3,9 @@
 namespace Rauma\Test\Templating;
 
 use Rauma\Templating\TemplatingFactory;
+use PHPUnit\Framework\TestCase;
 
-class TemplatingFactoryTest extends \PHPUnit_Framework_TestCase
+class TemplatingFactoryTest extends TestCase
 {
     public function testCreate()
     {

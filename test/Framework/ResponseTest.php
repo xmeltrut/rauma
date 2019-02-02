@@ -3,8 +3,9 @@
 namespace Rauma\Test\Framework;
 
 use Rauma\Framework\Response;
+use PHPUnit\Framework\TestCase;
 
-class ResponseTest extends \PHPUnit_Framework_TestCase
+class ResponseTest extends TestCase
 {
     public function testSendBody()
     {

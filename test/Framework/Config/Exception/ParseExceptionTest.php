@@ -3,8 +3,9 @@
 namespace Rauma\Test\Framework\Config\Exception;
 
 use Rauma\Framework\Config\Exception\ParseException;
+use PHPUnit\Framework\TestCase;
 
-class ParseExceptionTest extends \PHPUnit_Framework_TestCase
+class ParseExceptionTest extends TestCase
 {
     public function testException()
     {

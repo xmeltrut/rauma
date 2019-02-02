@@ -4,8 +4,9 @@ namespace Rauma\Test\Framework\Controller;
 
 use Rauma\Framework\Controller\ExceptionController;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class ExceptionControllerTest extends \PHPUnit_Framework_TestCase
+class ExceptionControllerTest extends TestCase
 {
     private $di;
     private $request;
@@ -14,8 +15,8 @@ class ExceptionControllerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->di = $this->getMock('Rauma\Service\Container');
-        $this->request = $this->getMock('Psr\Http\Message\ServerRequestInterface');
+        $this->di = $this->createMock('Rauma\Service\Container');
+        $this->request = $this->createMock('Psr\Http\Message\ServerRequestInterface');
         $this->controller = new ExceptionController($this->di, $this->request);
 
         $this->templating = $this->getMockBuilder('Rauma\Templating\Templating')

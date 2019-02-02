@@ -3,8 +3,9 @@
 namespace Rauma\Framework\Dispatch;
 
 use Rauma\Framework\Dispatch\ControllerReader;
+use PHPUnit\Framework\TestCase;
 
-class ControllerReaderTest extends \PHPUnit_Framework_TestCase
+class ControllerReaderTest extends TestCase
 {
     private $reader;
     private $cr;
@@ -18,7 +19,7 @@ class ControllerReaderTest extends \PHPUnit_Framework_TestCase
 
     public function testRead()
     {
-        $classAnnotation = $this->getMock('Rauma\Framework\Annotation\LoggedIn');
+        $classAnnotation = $this->createMock('Rauma\Framework\Annotation\LoggedIn');
 
         $routeAnnotation = $this->getMockBuilder('Rauma\Framework\Annotation\Route')
                                 ->disableOriginalConstructor()

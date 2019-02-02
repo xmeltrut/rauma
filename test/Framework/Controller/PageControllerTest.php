@@ -4,8 +4,9 @@ namespace Rauma\Test\Framework\Controller;
 
 use Rauma\Test\Bootstrap\ConcretePageController;
 use Rauma\Test\Bootstrap\TemplatingQueue;
+use PHPUnit\Framework\TestCase;
 
-class PageControllerTest extends \PHPUnit_Framework_TestCase
+class PageControllerTest extends TestCase
 {
     private $di;
     private $request;
@@ -14,8 +15,8 @@ class PageControllerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->di = $this->getMock('Rauma\Service\Container');
-        $this->request = $this->getMock('Psr\Http\Message\ServerRequestInterface');
+        $this->di = $this->createMock('Rauma\Service\Container');
+        $this->request = $this->createMock('Psr\Http\Message\ServerRequestInterface');
         $this->controller = new ConcretePageController($this->di, $this->request);
     }
 

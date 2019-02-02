@@ -3,8 +3,9 @@
 namespace Rauma\Test\Messaging\Response;
 
 use Rauma\Messaging\Response\RedirectResponse;
+use PHPUnit\Framework\TestCase;
 
-class RedirectResponseTest extends \PHPUnit_Framework_TestCase
+class RedirectResponseTest extends TestCase
 {
     public function testConstruct()
     {

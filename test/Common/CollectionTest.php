@@ -3,8 +3,9 @@
 namespace Rauma\Test\Common;
 
 use Rauma\Common\Collection;
+use PHPUnit\Framework\TestCase;
 
-class COllectionTest extends \PHPUnit_Framework_TestCase
+class COllectionTest extends TestCase
 {
     public function testCollection()
     {

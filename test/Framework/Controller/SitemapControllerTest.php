@@ -3,17 +3,18 @@
 namespace Rauma\Test\Framework\Controller;
 
 use Rauma\Test\Bootstrap\ConcreteSitemapController;
+use PHPUnit\Framework\TestCase;
 
-class SitemapControllerTest extends \PHPUnit_Framework_TestCase
+class SitemapControllerTest extends TestCase
 {
     public function testRenderSitemap()
     {
         // create a mock sitemap
-        $sitemap = $this->getMock('Rauma\Sitemap\Sitemap');
+        $sitemap = $this->createMock('Rauma\Sitemap\Sitemap');
 
         // create mock controller objects
-        $di = $this->getMock('Rauma\Service\Container');
-        $request = $this->getMock('Psr\Http\Message\ServerRequestInterface');
+        $di = $this->createMock('Rauma\Service\Container');
+        $request = $this->createMock('Psr\Http\Message\ServerRequestInterface');
 
         // attach a mock templating object
         $templating = $this->getMockBuilder('Rauma\Templating\Templating')

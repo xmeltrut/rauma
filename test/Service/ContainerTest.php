@@ -3,8 +3,9 @@
 namespace Rauma\Test\Service;
 
 use Rauma\Service\Container;
+use PHPUnit\Framework\TestCase;
 
-class ContainerTest extends \PHPUnit_Framework_TestCase
+class ContainerTest extends TestCase
 {
     public function testSet()
     {

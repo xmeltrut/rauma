@@ -3,8 +3,9 @@
 namespace Rauma\Test\Sitemap;
 
 use Rauma\Sitemap\Sitemap;
+use PHPUnit\Framework\TestCase;
 
-class SitemapTest extends \PHPUnit_Framework_TestCase
+class SitemapTest extends TestCase
 {
     public function testAddUrl()
     {

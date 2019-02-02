@@ -3,8 +3,9 @@
 namespace Rauma\Test\Framework\Annotation;
 
 use Rauma\Framework\Annotation\LoggedIn;
+use PHPUnit\Framework\TestCase;
 
-class LoggedInTest extends \PHPUnit_Framework_TestCase
+class LoggedInTest extends TestCase
 {
     public function testClass()
     {

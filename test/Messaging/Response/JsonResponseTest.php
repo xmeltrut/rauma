@@ -3,8 +3,9 @@
 namespace Rauma\Test\Messaging\Response;
 
 use Rauma\Messaging\Response\JsonResponse;
+use PHPUnit\Framework\TestCase;
 
-class JsonResponseTest extends \PHPUnit_Framework_TestCase
+class JsonResponseTest extends TestCase
 {
     public function testConstruct()
     {

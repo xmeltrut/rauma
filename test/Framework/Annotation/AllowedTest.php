@@ -3,8 +3,9 @@
 namespace Rauma\Test\Framework\Annotation;
 
 use Rauma\Framework\Annotation\Allowed;
+use PHPUnit\Framework\TestCase;
 
-class AllowedTest extends \PHPUnit_Framework_TestCase
+class AllowedTest extends TestCase
 {
     public function testGetRoles()
     {

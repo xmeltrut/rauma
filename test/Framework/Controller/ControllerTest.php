@@ -3,8 +3,9 @@
 namespace Rauma\Test\Framework\Controller;
 
 use Rauma\Test\Bootstrap\ConcreteController;
+use PHPUnit\Framework\TestCase;
 
-class ControllerTest extends \PHPUnit_Framework_TestCase
+class ControllerTest extends TestCase
 {
     private $di;
     private $request;
@@ -12,8 +13,8 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->di = $this->getMock('Rauma\Service\Container');
-        $this->request = $this->getMock('Psr\Http\Message\ServerRequestInterface');
+        $this->di = $this->createMock('Rauma\Service\Container');
+        $this->request = $this->createMock('Psr\Http\Message\ServerRequestInterface');
 
         $this->controller = new ConcreteController($this->di, $this->request);
     }

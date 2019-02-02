@@ -3,8 +3,9 @@
 namespace Rauma\Test\Sitemap;
 
 use Rauma\Sitemap\SitemapUrl;
+use PHPUnit\Framework\TestCase;
 
-class SitemapUrlTest extends \PHPUnit_Framework_TestCase
+class SitemapUrlTest extends TestCase
 {
     public function testAccessors()
     {
