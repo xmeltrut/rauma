@@ -1,6 +1,10 @@
 Changelog
 =========
 
+4.00
+----
+* Add `Response` proxy objects that can be called from the Rauma namespace
+
 3.14
 ----
 * Validate we have the database config before trying to use it
