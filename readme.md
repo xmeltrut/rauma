@@ -9,7 +9,7 @@ Rauma PHP Framework
 
 A full-stack PHP framework. Rauma uses convention over configuration to provide an out-of-the-box framework. This means it is easy to setup but relatively inflexible (you have to use Mustache and Doctrine, for example).
 
-Limited documentation is available in the `docs` directory, or online via [Read the Docs](http://rauma.readthedocs.io/en/latest/).
+Documentation is available in the `docs` directory, or online via [Read the Docs](http://rauma.readthedocs.io/en/latest/).
 
 Development
 -----------
