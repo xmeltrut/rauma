@@ -10,6 +10,10 @@ class TemplateNotFoundExceptionTest extends TestCase
     public function testException()
     {
         $exception = new TemplateNotFoundException('test.html');
-        $this->assertContains('test.html', $exception->getMessage());
+
+        $this->assertStringContainsString(
+            'test.html',
+            $exception->getMessage()
+        );
     }
 }

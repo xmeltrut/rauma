@@ -10,6 +10,10 @@ class ParseExceptionTest extends TestCase
     public function testException()
     {
         $exception = new ParseException('Unknown error');
-        $this->assertContains('Unknown error', $exception->getMessage());
+
+        $this->assertStringContainsString(
+            'Unknown error',
+            $exception->getMessage()
+        );
     }
 }

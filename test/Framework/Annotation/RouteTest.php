@@ -4,6 +4,7 @@ namespace Rauma\Test\Framework\Annotation;
 
 use Rauma\Framework\Annotation\Route;
 use PHPUnit\Framework\TestCase;
+use Exception;
 
 class RouteTest extends TestCase
 {
@@ -62,11 +63,10 @@ class RouteTest extends TestCase
         $this->assertEquals('get__index', $route->generateName());
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testNoVerbs()
     {
+        $this->expectException(Exception::class);
+
         $route = new Route([
             'value' => '/test-route',
             'method' => 'FAKE-VERB'

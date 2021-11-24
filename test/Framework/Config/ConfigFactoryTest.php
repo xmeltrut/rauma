@@ -3,8 +3,10 @@
 namespace Rauma\Test\Framework\Config;
 
 use Rauma\Framework\Config\ConfigFactory;
+use Rauma\Framework\Config\Exception\ParseException;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
+use Exception;
 
 class ConfigFactoryTest extends TestCase
 {
@@ -19,11 +21,10 @@ class ConfigFactoryTest extends TestCase
         $this->assertEquals(['a' => 'b'], $config);
     }
 
-    /**
-     * @expectedException \Rauma\Framework\Config\Exception\ParseException
-     */
     public function testInvalidYaml()
     {
+        $this->expectException(ParseException::class);
+
         $fileSystem = vfsStream::setup();
         $configFile = vfsStream::newFile('config.yml')->at($fileSystem);
         $configFile->setContent('test: "!%');
@@ -31,11 +32,10 @@ class ConfigFactoryTest extends TestCase
         $x = $config = ConfigFactory::load($configFile->url());
     }
 
-    /**
-     * @expectedException \Exception
-     */
     public function testMissingFile()
     {
+        $this->expectException(Exception::class);
+
         $fileSystem = vfsStream::setup();
         $config = ConfigFactory::load(sprintf('%s/not-there.yml', $fileSystem->url()));
     }

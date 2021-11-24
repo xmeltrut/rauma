@@ -13,7 +13,7 @@ class PageControllerTest extends TestCase
     private $templating;
     private $controller;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->di = $this->createMock('Rauma\Service\Container');
         $this->request = $this->createMock('Psr\Http\Message\ServerRequestInterface');

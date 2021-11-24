@@ -10,7 +10,7 @@ class ControllerReaderTest extends TestCase
     private $reader;
     private $cr;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->reader = $this->getMockBuilder('Doctrine\Common\Annotations\Reader')
                              ->disableOriginalConstructor()

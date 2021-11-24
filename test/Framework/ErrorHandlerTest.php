@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ErrorHandlerTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         restore_error_handler();
     }

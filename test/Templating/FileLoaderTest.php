@@ -3,6 +3,8 @@
 namespace Rauma\Test\Templating;
 
 use Rauma\Templating\FileLoader;
+use Rauma\Templating\Exception\RuntimeException;
+use Rauma\Templating\Exception\TemplateNotFoundException;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
@@ -32,20 +34,18 @@ class FileLoaderTest extends TestCase
         $this->assertEquals(false, $loader->exists('c.html'));
     }
 
-    /**
-     * @expectedException Rauma\Templating\Exception\TemplateNotFoundException
-     */
     public function testTemplateNotFound()
     {
+        $this->expectException(TemplateNotFoundException::class);
+
         $loader = new FileLoader(__DIR__);
         $loader->load('not-there.html');
     }
 
-    /**
-     * @expectedException Rauma\Templating\Exception\RuntimeException
-     */
     public function testInvalidDirectory()
     {
+        $this->expectException(RuntimeException::class);
+
         $loader = new FileLoader(__DIR__ . '/not-there');
     }
 }

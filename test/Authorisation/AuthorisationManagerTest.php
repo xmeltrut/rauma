@@ -2,14 +2,17 @@
 
 namespace Rauma\Test\Authorisation;
 
+use Rauma\Authorisation\Authorisation;
 use Rauma\Authorisation\AuthorisationManager;
+use Rauma\Authorisation\Exception\ForbiddenException;
+use Rauma\Authorisation\Exception\UnauthorisedException;
 use PHPUnit\Framework\TestCase;
 
 class AuthorisationManagerTest extends TestCase
 {
     public function testValidateRoute()
     {
-        $auth = $this->getMockBuilder('Rauma\Authorisation\Authorisation')
+        $auth = $this->getMockBuilder(Authorisation::class)
                      ->disableOriginalConstructor()
                      ->getMock();
 
@@ -24,12 +27,11 @@ class AuthorisationManagerTest extends TestCase
         ]));
     }
 
-    /**
-     * @expectedException \Rauma\Authorisation\Exception\UnauthorisedException
-     */
     public function testValidateRouteUnauthorised()
     {
-        $auth = $this->getMockBuilder('Rauma\Authorisation\Authorisation')
+        $this->expectException(UnauthorisedException::class);
+
+        $auth = $this->getMockBuilder(Authorisation::class)
                      ->disableOriginalConstructor()
                      ->getMock();
 
@@ -40,12 +42,11 @@ class AuthorisationManagerTest extends TestCase
         $auth->validateRoute(['required' => true]);
     }
 
-    /**
-     * @expectedException \Rauma\Authorisation\Exception\ForbiddenException
-     */
     public function testValidateRouteForbidden()
     {
-        $auth = $this->getMockBuilder('Rauma\Authorisation\Authorisation')
+        $this->expectException(ForbiddenException::class);
+
+        $auth = $this->getMockBuilder(Authorisation::class)
                      ->disableOriginalConstructor()
                      ->getMock();
 

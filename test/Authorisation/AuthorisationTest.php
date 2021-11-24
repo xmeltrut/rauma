@@ -3,19 +3,21 @@
 namespace Rauma\Test\Authorisation;
 
 use Rauma\Authorisation\Authorisation;
+use Aura\Session\Segment;
+use Aura\Session\Session;
 use PHPUnit\Framework\TestCase;
 
 class AuthorisationTest extends TestCase
 {
     public function testAuthoriserUser()
     {
-        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+        $segment = $this->getMockBuilder(Segment::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $segment->expects($this->exactly(4))->method('set');
         $segment->method('get')->willReturn(true);
 
-        $session = $this->getMockBuilder('Aura\\Session\\Session')
+        $session = $this->getMockBuilder(Session::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $session->method('getSegment')->willReturn($segment);
@@ -29,13 +31,13 @@ class AuthorisationTest extends TestCase
 
     public function testDeauthoriseUser()
     {
-        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+        $segment = $this->getMockBuilder(Segment::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $segment->expects($this->exactly(1))->method('clear');
         $segment->method('get')->willReturn(false);
 
-        $session = $this->getMockBuilder('Aura\\Session\\Session')
+        $session = $this->getMockBuilder(Session::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $session->method('getSegment')->willReturn($segment);
@@ -48,12 +50,12 @@ class AuthorisationTest extends TestCase
 
     public function testGetId()
     {
-        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+        $segment = $this->getMockBuilder(Segment::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $segment->expects($this->exactly(1))->method('get')->with('id');
 
-        $session = $this->getMockBuilder('Aura\\Session\\Session')
+        $session = $this->getMockBuilder(Session::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $session->method('getSegment')->willReturn($segment);
@@ -64,12 +66,12 @@ class AuthorisationTest extends TestCase
 
     public function testHasRole()
     {
-        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+        $segment = $this->getMockBuilder(Segment::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $segment->expects($this->exactly(2))->method('get')->with('roles')->willReturn(['role1']);
 
-        $session = $this->getMockBuilder('Aura\\Session\\Session')
+        $session = $this->getMockBuilder(Session::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $session->method('getSegment')->willReturn($segment);
@@ -82,12 +84,12 @@ class AuthorisationTest extends TestCase
 
     public function testAttributes()
     {
-        $segment = $this->getMockBuilder('Aura\\Session\\Segment')
+        $segment = $this->getMockBuilder(Segment::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $segment->expects($this->exactly(2))->method('get')->with('attributes')->willReturn(['test' => 10]);
 
-        $session = $this->getMockBuilder('Aura\\Session\\Session')
+        $session = $this->getMockBuilder(Session::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         $session->method('getSegment')->willReturn($segment);
@@ -100,14 +102,14 @@ class AuthorisationTest extends TestCase
 
     public function testHashAndVerifyPassword()
     {
-        $session = $this->getMockBuilder('Aura\\Session\\Session')
+        $session = $this->getMockBuilder(Session::class)
                         ->disableOriginalConstructor()
                         ->getMock();
         
         $auth = new Authorisation($session);
         $hash = $auth->hashPassword('password123');
 
-        $this->assertInternalType('string', $hash);
+        $this->assertIsString($hash);
         $this->assertNotEquals('password123', $hash);
 
         $this->assertEquals(true, $auth->verifyPassword($hash, 'password123'));
@@ -116,7 +118,7 @@ class AuthorisationTest extends TestCase
 
     public function testVerifyBlankPasswords()
     {
-        $session = $this->getMockBuilder('Aura\\Session\\Session')
+        $session = $this->getMockBuilder(Session::class)
                         ->disableOriginalConstructor()
                         ->getMock();
 

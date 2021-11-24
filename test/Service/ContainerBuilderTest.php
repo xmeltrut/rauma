@@ -4,6 +4,7 @@ namespace Rauma\Test\Service;
 
 use Rauma\Service\ContainerBuilder;
 use PHPUnit\Framework\TestCase;
+use Exception;
 
 class ContainerBuilderTest extends TestCase
 {
@@ -20,11 +21,10 @@ class ContainerBuilderTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testInvalidConfig()
     {
+        $this->expectException(Exception::class);
+
         $di = ContainerBuilder::create([
             'test' => ['params' => ['param1']]
         ]);

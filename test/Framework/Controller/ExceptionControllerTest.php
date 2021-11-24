@@ -3,8 +3,8 @@
 namespace Rauma\Test\Framework\Controller;
 
 use Rauma\Framework\Controller\ExceptionController;
-use Exception;
 use PHPUnit\Framework\TestCase;
+use Exception;
 
 class ExceptionControllerTest extends TestCase
 {
@@ -13,7 +13,7 @@ class ExceptionControllerTest extends TestCase
     private $templating;
     private $controller;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->di = $this->createMock('Rauma\Service\Container');
         $this->request = $this->createMock('Psr\Http\Message\ServerRequestInterface');
@@ -30,10 +30,11 @@ class ExceptionControllerTest extends TestCase
 
     /**
      * @runInSeparateProcess
-     * @expectedException Exception
      */
     public function testErrorDisplayErrors()
     {
+        $this->expectException(Exception::class);
+
         putenv('app.display_errors=1');
 
         $response = $this->controller->error(new Exception);
