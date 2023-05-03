@@ -12,7 +12,6 @@ use Aura\Router\RouterContainer;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\IndexedReader;
-use Doctrine\Common\Cache\ApcCache;
 use Psr\Http\Message\ServerRequestInterface;
 use ReflectionClass;
 
@@ -106,8 +105,8 @@ class Dispatcher
         $router = new RouterContainer();
         $reader = new IndexedReader(
             new AnnotationReader,
-            new ApcCache,
-            (!getenv('app.cache.enable'))
+            //new ApcCache,
+            //(!getenv('app.cache.enable'))
         );
         $map = $router->getMap();
 
