@@ -40,7 +40,7 @@ namespace App\Controller;
 
 use Rauma\Framework\Controller\PageController;
 use Rauma\Framework\Controller\ExceptionControllerInterface;
-use Zend\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\HtmlResponse;
 
 class ExceptionController extends PageController implements ExceptionControllerInterface
 {

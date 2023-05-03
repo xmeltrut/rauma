@@ -37,7 +37,7 @@ class PageControllerTest extends TestCase
 
         $response = $this->controller->utRender('template.html', ['a' => 'b'], 301);
 
-        $this->assertInstanceOf('Zend\Diactoros\Response\HtmlResponse', $response);
+        $this->assertInstanceOf('Laminas\Diactoros\Response\HtmlResponse', $response);
         $this->assertEquals(301, $response->getStatusCode());
         $this->assertEquals('html-content', $response->getBody());
     }
@@ -57,7 +57,7 @@ class PageControllerTest extends TestCase
             300
         );
 
-        $this->assertInstanceOf('Zend\Diactoros\Response\HtmlResponse', $response);
+        $this->assertInstanceOf('Laminas\Diactoros\Response\HtmlResponse', $response);
         $this->assertEquals(300, $response->getStatusCode());
         $this->assertEquals('html-content', $response->getBody());
 

@@ -3,6 +3,7 @@
 namespace Rauma\Test\Messaging;
 
 use Rauma\Messaging\ServerRequestFactory;
+use Laminas\Diactoros\ServerRequest;
 use PHPUnit\Framework\TestCase;
 
 class ServerRequestFactoryTest extends TestCase
@@ -12,7 +13,7 @@ class ServerRequestFactoryTest extends TestCase
         $request = ServerRequestFactory::fromGlobals();
 
         $this->assertInstanceOf(
-            'Rauma\Messaging\ServerRequest',
+            ServerRequest::class,
             $request
         );
     }

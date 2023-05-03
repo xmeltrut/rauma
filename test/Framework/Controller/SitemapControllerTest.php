@@ -37,7 +37,7 @@ class SitemapControllerTest extends TestCase
         $response = $controller->utRenderSitemap($sitemap);
 
         // validate result
-        $this->assertInstanceOf('Zend\Diactoros\Response\TextResponse', $response);
+        $this->assertInstanceOf('Laminas\Diactoros\Response\TextResponse', $response);
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('sitemap-xml', $response->getBody());
     }

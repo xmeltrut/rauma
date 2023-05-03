@@ -11,7 +11,7 @@ class ResponseTest extends TestCase
     {
         $this->expectOutputString('html-body');
 
-        $message = $this->getMockBuilder('Zend\Diactoros\Response')
+        $message = $this->getMockBuilder('Laminas\Diactoros\Response')
                         ->disableOriginalConstructor()
                         ->getMock();
 

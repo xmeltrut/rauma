@@ -48,7 +48,7 @@ class ExceptionControllerTest extends TestCase
 
         $response = $this->controller->error(new Exception);
 
-        $this->assertInstanceOf('Zend\Diactoros\Response\HtmlResponse', $response);
+        $this->assertInstanceOf('Laminas\Diactoros\Response\HtmlResponse', $response);
         $this->assertEquals(500, $response->getStatusCode());
         $this->assertEquals('html-content', $response->getBody());
     }
@@ -61,7 +61,7 @@ class ExceptionControllerTest extends TestCase
 
         $response = $this->controller->forbidden();
 
-        $this->assertInstanceOf('Zend\Diactoros\Response\HtmlResponse', $response);
+        $this->assertInstanceOf('Laminas\Diactoros\Response\HtmlResponse', $response);
         $this->assertEquals(403, $response->getStatusCode());
         $this->assertEquals('html-content', $response->getBody());
     }
@@ -74,14 +74,14 @@ class ExceptionControllerTest extends TestCase
 
         $response = $this->controller->notFound();
 
-        $this->assertInstanceOf('Zend\Diactoros\Response\HtmlResponse', $response);
+        $this->assertInstanceOf('Laminas\Diactoros\Response\HtmlResponse', $response);
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertEquals('html-content', $response->getBody());
     }
 
     public function testUnauthorised()
     {
-        $uri = $this->getMockBuilder('Zend\Diactoros\Uri')
+        $uri = $this->getMockBuilder('Laminas\Diactoros\Uri')
                     ->disableOriginalConstructor()
                     ->getMock();
 
@@ -92,7 +92,7 @@ class ExceptionControllerTest extends TestCase
 
         $response = $this->controller->unauthorised();
 
-        $this->assertInstanceOf('Zend\Diactoros\Response\RedirectResponse', $response);
+        $this->assertInstanceOf('Laminas\Diactoros\Response\RedirectResponse', $response);
         $this->assertEquals(401, $response->getStatusCode());
 
         $this->assertEquals(

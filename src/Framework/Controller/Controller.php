@@ -4,7 +4,7 @@ namespace Rauma\Framework\Controller;
 
 use Rauma\Common\Collection;
 use Rauma\Service\Container;
-use Zend\Diactoros\Request;
+use Laminas\Diactoros\Request;
 
 /**
  * Base controller for others to extend.

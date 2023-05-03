@@ -72,7 +72,7 @@ class ControllerTest extends TestCase
 
     public function testGetJson()
     {
-        $body = $this->getMockBuilder('Zend\Diactoros\PhpInputStream')
+        $body = $this->getMockBuilder('Laminas\Diactoros\PhpInputStream')
                      ->disableOriginalConstructor()
                      ->getMock();
         $body->method('getContents')->willReturn('{"a":"b"}');
