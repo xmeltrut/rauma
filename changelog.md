@@ -1,6 +1,11 @@
 Changelog
 =========
 
+5.0
+---
+
+* Upgrade to PHP 8
+
 4.0.4
 -----
 * Update dependencies
